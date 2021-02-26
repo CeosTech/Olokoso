@@ -84,26 +84,26 @@ WSGI_APPLICATION = 'texan_back.wsgi.application'
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 # Sql lite
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-
-# MySql
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'OPTIONS': {
-            'database': 'texan-restaurant',
-            'password': '',
-            'user': 'root',
-            'port': 3309,
-            'host': '127.0.0.1'  # 'localhost'
-        }
-    }
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+   }
 }
+
+# MySql
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.mysql',
+#        'OPTIONS': {
+#            'database': 'texan-restaurant',
+#            'password': '',
+#            'user': 'root',
+#            'port': 3309,
+#            'host': '127.0.0.1'  # 'localhost'
+#        }
+#    }
+#}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
