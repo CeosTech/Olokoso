@@ -30,6 +30,7 @@ const NavBar = () => {
   const [showBgNavBar, setShowBgNavBar] = useState(false);
   const baskets = useSelector(selectBaskets);
 
+  
   const changeBackground = () => {
     // console.log(window.scrollY);
     if (window.scrollY >= 80) {
@@ -39,9 +40,11 @@ const NavBar = () => {
     }
   };
 
+
   window.addEventListener("scroll", changeBackground);
 
   const IsActiveButton = (id) => (e) => {
+    console.log("id :: " + id)
     // setActiveButton(id);
     dispatch({
       id,
@@ -71,23 +74,26 @@ const NavBar = () => {
           <div className='navbar__logo-container'>
             {location.pathname === "/" ? (
               <a href='#home' onClick={IsActiveButton("home")}>
-                <img className='navbar__logo' src={Logo} alt='Markus' />
+                <img className='navbar__logo' src={Logo} alt='Olokoso logo' />
               </a>
             ) : (
               <Link to='/' onClick={pushToHome("home")}>
-                <img className='navbar__logo' src={Logo} alt='Markus' />
+                <img className='navbar__logo' src={Logo} alt='Olokoso logo' />
               </Link>
             )}
           </div>
           <div className='navbar__links'>
             {state.map((link) => {
+              console.log(link)
+              
+              //Case if the link is 'panier'
               if (link.isBasket) {
                 return (
                   <div
                     key={link.path}
-                    className={`${
-                      location.pathname === link.path ? "active " : ""
-                    }navbar__links-basket`}
+                    className={`${link.active ? "active" : ""
+                  }navbar__links-basket`}
+                    onClick={pushToHome(link.id)}
                     style={{
                       display: "flex",
                       alignItems: "center",
@@ -110,7 +116,7 @@ const NavBar = () => {
                           <Popover.Title as='h3' className='text-center'>
                             Votre panier {!baskets.length && "est vide"}
                           </Popover.Title>
-                          {/* quand le panier est remplie*/}
+                          {/* quand le panier est rempli*/}
                           {!!baskets.length && (
                             <Popover.Content>
                               {baskets.map((item) => (
@@ -148,33 +154,37 @@ const NavBar = () => {
                 );
               }
 
-              // if (link.estDansHome) {
-              //   if (location.pathname === "/") {
-              //     return (
-              //       <a
-              //         href={"#" + link.id}
-              //         key={link.path}
-              //         className={link.active ? "active" : undefined}
-              //         onClick={pushToHome(link.id)}>
-              //         {link.nom}
-              //       </a>
-              //     );
-              //   }
-              //   return null;
-              // }
+              //Case if the link is in the Home one page : allows to mark the clicked link as active (hence highlighting it in the navbar)
+              else if (link.estDansHome) {
+                   return (
+                     <a
+                       href={"#" + link.id}
+                       key={link.nom}
+                       className={link.active ? "active" : undefined}
+                       onClick={pushToHome(link.id)}>
+                        {link.nom}
+                     </a>
+                   );
+              }
+
+              // Case for other links, that are neither in the homepage, nor the basket.
+              else {
+                return (
+                  <Link
+                    to={link.path}
+                    key={link.path}
+                    className={
+                      link.active ? "active" : undefined
+                    }
+                    onClick={IsActiveButton(link.id)}>
+                    {link.nom}
+                  </Link>
+                );
+              }
 
               // return jsx
               // console.log(location.pathname);
-              return (
-                <Link
-                  to={link.path}
-                  key={link.path}
-                  className={
-                    location.pathname === link.path ? "active" : undefined
-                  }>
-                  {link.nom}
-                </Link>
-              );
+              
             })}
           </div>
 
