@@ -19,6 +19,7 @@ export const Navigation = ({
   currentPage,
   IsActiveButton,
   activeButton,
+  location,
 }) => {
   const { state } = useNavBarStateValue();
 
@@ -38,6 +39,7 @@ export const Navigation = ({
             active={active}
             IsActiveButton={IsActiveButton}
             activeButton={activeButton}
+            location={location}
           />
         );
         // }

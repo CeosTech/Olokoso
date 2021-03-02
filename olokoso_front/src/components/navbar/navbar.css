@@ -49,10 +49,13 @@
 }
 .navbar__links a {
   text-decoration: none !important;
-  color: white;
   font-weight: 600;
   letter-spacing: 1px;
   transition: 0.2s;
+}
+
+.navbar__links a:not(.active) {
+  color: white;
 }
 
 .navbar__links-basket {
@@ -78,7 +81,7 @@
   color: rgb(233, 233, 233);
 }
 
-.navbar__links a.active,
+
 .navbar__links a:hover {
   color:white;
 }
@@ -89,13 +92,14 @@
   color: white;
 }
 .navbar.sticky .navbar__links a.active,
+.navbar__links a.active,
 .navbar.sticky .navbar__links a:hover,
 .navbar.active .navbar__links a.active,
 .navbar.active .navbar__links a:hover,
 .navbar.sticky .navbar__links-basket .MuiIconButton-root:hover .MuiSvgIcon-root,
 .navbar.active .navbar__links-basket .MuiIconButton-root:hover .MuiSvgIcon-root,
 .navbar.sticky .navbar__links-basket.active .MuiSvgIcon-root {
-  color: #FFE000;
+  color: #FFE000 !important;
 }
 
 @media (max-width: 1250px) {

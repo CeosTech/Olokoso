@@ -13,7 +13,7 @@ const initialState = [
 
   {
     path: "/contact",
-    id: "traiteur",
+    id: "contact",
     nom: "Traiteur",
     estDansHome: false,
     active: false,
@@ -41,3 +41,5 @@ const NavBarContextProvider = ({ children }) => {
 export const useNavBarStateValue = () => useContext(NavBarContext);
 
 export default NavBarContextProvider;
+
+
