@@ -1,19 +1,15 @@
 from django.db import models
-
+from django.contrib.auth.models import User
 # Create your models here.
 
 
-class Ingredient_info(models.Model):
-    description = models.TextField(null=True)
-
-    def __str__(self):
-        return self.id
+class Admin_account(models.Model): # Ajouter à l'admin Django
+    user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
 
 
 class Ingredient(models.Model):
     nom = models.CharField(max_length=50)
-    ingredient_info = models.ForeignKey(
-        Ingredient_info, on_delete=models.CASCADE)
+    description = models.TextField(null=True)
 
     def __str__(self):
         return self.nom
@@ -21,45 +17,34 @@ class Ingredient(models.Model):
 
 class Categorie(models.Model):
     nom = models.CharField(max_length=50)
-    libelle = models.CharField(max_length=50, null=False, blank=False)
+    description = models.TextField(null=True)
 
     def __str__(self):
-        return self.libelle
+        return self.nom
 
 
 class Produit(models.Model):
     nom = models.CharField(max_length=20, unique=True)
     description = models.TextField(null=True, blank=True)
-    image_url = models.CharField(max_length=2048)
-    prix = models.FloatField(default=0)
-    # categorie = models.ForeignKey(
-    #     Categorie, on_delete=models.SET_NULL, null=True)
-    categories = models.ManyToManyField(Categorie, blank=True)
+    categories = models.ManyToManyField(Categorie, blank=True) #Entrée Plats Dessert
     ingredients = models.ManyToManyField(Ingredient, blank=True)
-
-    # self.ingredients.add(ing1 , ing2 etc)
-    # self.ingredients.remove(ing1)
-    # self.ingredients.all()
+    image = models.ImageField(null=True)
+    prix = models.FloatField(default=0)
+    disponibilite = models.BooleanField(default=False, null=True)
 
     def __str__(self):
         return self.nom
 
-    def aff_categories(self):
-        return ', '.join(categ.nom for categ in self.categories.all())
 
 
 class Menu(models.Model):
     nom = models.CharField(max_length=20, unique=True)
     description = models.TextField(null=True, blank=True)
-    image_url = models.CharField(max_length=2048)
-    prix = models.FloatField(default=0)
     produits = models.ManyToManyField(Produit)
-    # categorie = models.ForeignKey(
-    #     Categorie, on_delete=models.SET_NULL, null=True)
-    categories = models.ManyToManyField(Categorie, blank=True)
+    image = models.ImageField(null=True)
+    prix = models.FloatField(default=0)
+    disponibilite = models.BooleanField(default=False, null=True)
 
     def __str__(self):
         return self.nom
 
-    def aff_categories(self):
-        return ', '.join(categ.nom for categ in self.categories.all())
