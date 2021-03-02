@@ -1,3 +1,5 @@
+
+
 .hero {
   /* background-color: #3c3c3c; */
   width: 100%;
@@ -59,17 +61,20 @@
   /* color: #3bb9e0; */
   text-transform: uppercase;
   font-weight: bolder !important;
-  font-size: 1.5rem;
   margin-bottom: 0;
   letter-spacing: 2px;
   line-height: 2rem;
 }
 .hero__hero-hadings > p {
-  color: #fff;
   font-weight: bold;
-  font-size: 3rem;
   margin-bottom: 1.5rem;
   letter-spacing: 1px;
+}
+.hero__entete {
+  font-size: 3.8rem ;
+  margin-bottom: 2.5rem; 
+  font-family: 'joti-one';
+  color:#FFE000;
 }
 
 .hero__subtext {
@@ -77,10 +82,20 @@
   font-size: 1.8rem !important;
   margin-bottom: 2rem !important;
   font-weight: 500 !important;
+  color:white;
+}
+
+
+.hero__text{
+  /* color: #90d9f1 !important; */
+  font-size: 1rem !important;
+  margin-bottom: 2rem !important;
+  font-weight: 500 !important;
+  color:white;
 }
 
 .hero__hero-image .hero__image {
-  max-width: 95%;
+  max-width: 100%;
   object-fit: contain;
 }
 
@@ -161,10 +176,15 @@
   }
 
   .hero__subtext {
-    font-size: 1.5rem !important;
+    font-size: 1.8rem !important;
     margin-bottom: 2.5rem !important;
   }
 
+  .hero__entete {
+    font-size: 2.5rem !important;
+    margin-bottom: 2.5rem !important;
+  }
+ 
   .hero__hero {
     grid-template-columns: 1fr;
     padding: 0;
@@ -199,6 +219,10 @@
 
   .hero__subtext {
     font-size: 1.3rem !important;
+  }
+  .hero__subtext {
+    font-size: 1.8rem !important;
+    margin-bottom: 2.5rem !important;
   }
 
   .carousel-control-next,

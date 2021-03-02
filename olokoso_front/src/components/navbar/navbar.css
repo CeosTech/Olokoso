@@ -12,12 +12,12 @@
 
 .navbar.active {
   /* background: linear-gradient(90deg, #eb2735 0%, #eb123a 100%); */
-  background: #eb123a;
+  background: black;
 }
 .navbar.sticky {
   position: sticky !important;
   /* background: linear-gradient(90deg, #eb2735 0%, #eb123a 100%); */
-  background: #eb123a;
+  background: black;
 }
 
 .navbar__container {
@@ -37,6 +37,7 @@
 
 .navbar__logo {
   width: 90px;
+  height:65px;
   object-fit: contain;
 }
 
@@ -48,7 +49,7 @@
 }
 .navbar__links a {
   text-decoration: none !important;
-  color: rgb(223, 223, 223);
+  color: white;
   font-weight: 600;
   letter-spacing: 1px;
   transition: 0.2s;
@@ -79,13 +80,13 @@
 
 .navbar__links a.active,
 .navbar__links a:hover {
-  color: #ff5368;
+  color:white;
 }
 .navbar.sticky .navbar__links a,
 .navbar.active .navbar__links a,
 .navbar.active .navbar__links .navbar__links-basket .MuiSvgIcon-root,
 .navbar.sticky .navbar__links .navbar__links-basket .MuiSvgIcon-root {
-  color: #fda3ae;
+  color: white;
 }
 .navbar.sticky .navbar__links a.active,
 .navbar.sticky .navbar__links a:hover,
@@ -94,7 +95,7 @@
 .navbar.sticky .navbar__links-basket .MuiIconButton-root:hover .MuiSvgIcon-root,
 .navbar.active .navbar__links-basket .MuiIconButton-root:hover .MuiSvgIcon-root,
 .navbar.sticky .navbar__links-basket.active .MuiSvgIcon-root {
-  color: rgb(233, 233, 233);
+  color: #FFE000;
 }
 
 @media (max-width: 1250px) {
@@ -121,7 +122,7 @@
   }
 
   .navbar {
-    background: linear-gradient(90deg, #eb2735 0%, #eb123a 100%);
+    background: black;
   }
 }
 @media (max-width: 600px) {
