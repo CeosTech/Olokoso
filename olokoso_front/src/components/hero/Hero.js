@@ -2,7 +2,7 @@ import React from "react";
 import "./hero.css";
 
 import texas from "../../images/texas.png";
-import burger from "../../images/burger.png";
+import olokoso_logo from "../../images/olokoso_logo.png";
 
 import Carousel from "react-bootstrap/Carousel";
 import Logo from "../../images/logo.png";
@@ -11,17 +11,25 @@ import { Link } from "react-router-dom";
 
 const datas = [
   {
-    en_tete: "Découvrez nos burgers gourmets",
+    en_tete: "O'lokoso",
     sous_texte:
-      "Nos burgers sont préparés à base d’ingrédients frais et de saison, nous proposons des recettes de qualité inspirées de la cuisine Texane.",
-    image: burger,
+      "L'Afrique aux fourneaux !",
+    image: olokoso_logo,
     alt: "burger",
     lien: { route: "/commander", nom: "Commander" },
   },
   {
-    en_tete: "Un savoir-faire inspiré du Texas",
+    en_tete: "O'lokoso",
     sous_texte:
-      "Après un séjour au Texas dans le but de découvrir la culture culinaire et le fameux Barbecue Texan, nous avons acquis un savoir-faire et imaginé des recettes uniques et gourmandes.",
+      "Découvrez le Mafé Lover",
+    image: texas,
+    alt: "texas",
+    lien: { route: "/commander", nom: "Découvrir" },
+  },
+  {
+    en_tete: "O'lokoso",
+    sous_texte:
+      "Découvrez le Yassa Lover",
     image: texas,
     alt: "texas",
     lien: { route: "/commander", nom: "Découvrir" },
