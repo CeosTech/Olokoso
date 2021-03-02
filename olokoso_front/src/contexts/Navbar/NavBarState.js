@@ -3,17 +3,24 @@ import reducer from "./reducer";
 export const NavBarContext = createContext();
 
 const initialState = [
-  { path: "/", id: "home", nom: "Le Texan", estDansHome: true, active: true },
+  { path: "/", id: "home", nom: "Accueil", estDansHome: true, active: true },
 
-  { path: "/commander", nom: "Commander", estDansHome: false, active: false },
+  { path: "/commander", id: "commander", nom: "La carte", estDansHome: false, active: false },
+  
+  { path: "/", id: "equipe", nom: "L'équipe", estDansHome: true, active: false },
+
+  { path: "/", id: "restaurant", nom: "Notre restaurant", estDansHome: true, active: false },
+
   {
     path: "/contact",
-    nom: "Nous contacter",
+    id: "traiteur",
+    nom: "Traiteur",
     estDansHome: false,
     active: false,
   },
   {
     path: "/panier",
+    id: "panier",
     nom: "Mon panier",
     estDansHome: false,
     active: false,

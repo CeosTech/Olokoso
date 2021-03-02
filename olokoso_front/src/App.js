@@ -10,6 +10,7 @@ import Contact from "./pages/Contact";
 import Equipe from "./pages/Equipe";
 import Valeurs from "./pages/Valeurs";
 import Restaurant from "./pages/Restaurant";
+import Galerie from "./pages/Galerie";
 import Alerts from "./components/alert/Alerts";
 
 // Bootstrap
@@ -41,10 +42,11 @@ function App() {
             <Equipe />   
             <Valeurs />
             <Restaurant />
-            <Contact />
+            <Galerie />
           </Route>
           <Route exact path='/commander' component={Commander} />
           <Route exact path='/panier' component={Panier} />
+          <Route exact path='/contact' component={Contact} />
           <Route exact path='/paiement'>
             <Elements stripe={stripePromise}>
               <Paiement />

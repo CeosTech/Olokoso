@@ -1,6 +1,5 @@
 from django.contrib import admin
-
-from .models import Produit, Ingredient, Ingredient_info, Menu, Categorie
+from restaurant.models import *
 
 
 class ProduitAdmin(admin.ModelAdmin):
@@ -16,8 +15,8 @@ class MenuAdmin(admin.ModelAdmin):
 
 
 # Register your models here.
-admin.site.register(Categorie, CategorieAdmin)
-admin.site.register(Produit, ProduitAdmin)
-admin.site.register(Menu, MenuAdmin)
+admin.site.register(Categorie)
+admin.site.register(Produit)
+admin.site.register(Menu)
 admin.site.register(Ingredient)
-admin.site.register(Ingredient_info)
+#admin.site.register(Ingredient_info)

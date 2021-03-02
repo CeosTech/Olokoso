@@ -1,19 +1,17 @@
 from django.urls import path
 
-from . import views
+from restaurant.views import *
 
 app_name = 'restaurantApi'
 
 
 urlpatterns = [
     # /restaurant/carte
-    path('carte/', views.CarteView.as_view()),
-    #     path('carte/menus/', views.MenusView.as_view()),
-    path('carte/<str:categorie>/',
-         views.ProduitsCategorieView.as_view()),
-    path('carte/<str:categorie>/<int:id>/',
-         views.CategorieToProduitsDetailsView.as_view()),
-    path('produit/', views.ProduitView.as_view()),
-    path('produit/<int:pk>/', views.ProduitDetailsView.as_view()),
-    path('menu/<int:pk>/', views.MenuDetailsView.as_view()),
+    path('categorie/', CategorieView.as_view()),
+    path('categorie/<int:pk>/', CategorieDetailView.as_view()),
+    path('produit/', ProduitView.as_view()),
+    path('produit/<int:pk>/', ProduitDetailsView.as_view()),
+    path('menu/', MenuView.as_view()),
+    path('menu/<int:pk>/', MenuDetailsView.as_view()),
+
 ]
