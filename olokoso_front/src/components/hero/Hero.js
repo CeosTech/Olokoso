@@ -1,9 +1,9 @@
 import React from "react";
 import "./hero.css";
 
-import texas from "../../images/texas.png";
 import olokoso_logo from "../../images/olokoso_logo.png";
-
+import mafe_lover from "../../images/mafe-lover.png";
+import yassa_lover from "../../images/yassa-lover.png";
 import Carousel from "react-bootstrap/Carousel";
 import Logo from "../../images/logo.png";
 
@@ -14,6 +14,8 @@ const datas = [
     en_tete: "O'lokoso",
     sous_texte:
       "L'Afrique aux fourneaux !",
+    texte:
+    "O'Lokoso est une ode gustative à l'Afrique de l'Ouest. Nous vous proposons des plats issus de la culture Africaine avec une touche qui fait toute la différence !🔥🔥🔥",
     image: olokoso_logo,
     alt: "burger",
     lien: { route: "/commander", nom: "Commander" },
@@ -22,17 +24,31 @@ const datas = [
     en_tete: "O'lokoso",
     sous_texte:
       "Découvrez le Mafé Lover",
-    image: texas,
+    texte:
+    "Ce plat typique d'Afrique de l'Ouest connu pour sa fameuse sauce à base de pâte d'arachide va vous rendre totalement love !!❤️❤️❤️ ",
+    image: mafe_lover,
     alt: "texas",
-    lien: { route: "/commander", nom: "Découvrir" },
+    lien: { route: "/commander", nom: "Commander" },
   },
   {
     en_tete: "O'lokoso",
     sous_texte:
       "Découvrez le Yassa Lover",
-    image: texas,
+      texte:
+      "Des oignons frits, du riz, du poulet braisé mariné dans le citron... \n Le yassa vous attend pour nourrir de joie vos papilles 🚀🚀🚀 ",
+    image: yassa_lover,
     alt: "texas",
-    lien: { route: "/commander", nom: "Découvrir" },
+    lien: { route: "/commander", nom: "Commander" },
+  },
+  {
+    en_tete: "O'lokoso",
+    sous_texte:
+      "Prestation traiteur",
+      texte:
+      "Des oignons frits, du riz, du poulet braisé mariné dans le citron... \n Le yassa vous attend pour nourrir de joie vos papilles 🚀🚀🚀 ",
+    
+    alt: "texas",
+    lien: { route: "/commander", nom: "Contactez-nous" },
   },
 ];
 
@@ -47,9 +63,10 @@ const hero = () => {
                 <div className='carousel__item'>
                   <div className='hero__hero'>
                     <div className='hero__hero-hadings'>
-                      <img src={Logo} alt='' />
-                      <p>{data.en_tete}</p>
+                     
+                      <p className='hero__entete'>{data.en_tete}</p>
                       <p className='hero__subtext'>{data.sous_texte}</p>
+                      <p className='hero__text'>{data.texte}</p>
 
                       <Link to={data.lien.route} className='telecharger_btn'>
                         {data.lien.nom}

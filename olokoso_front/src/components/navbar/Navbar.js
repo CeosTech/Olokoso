@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useMemo, useState } from "react";
 import Logo from "../../images/logo.png";
 import "./navbar.css";
-
+import olokoso_logo from "../../images/olokoso_logo.png";
 import { Link, useLocation, useHistory } from "react-router-dom";
 import NavMobile from "./mobile/NavMobile";
 
@@ -71,7 +71,7 @@ const NavBar = () => {
           <div className='navbar__logo-container'>
             {location.pathname === "/" ? (
               <a href='#home' onClick={IsActiveButton("home")}>
-                <img className='navbar__logo' src={Logo} alt='Markus' />
+                <img className='navbar__logo' src={olokoso_logo} alt='Markus' />
               </a>
             ) : (
               <Link to='/' onClick={pushToHome("home")}>
