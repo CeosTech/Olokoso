@@ -1,5 +1,9 @@
 from rest_framework import serializers
-from .models import Produit, Ingredient, Ingredient_info, Menu, Categorie
+from restaurant.models import *
+
+
+
+
 
 
 class CategorieSerializer(serializers.ModelSerializer):
@@ -7,13 +11,11 @@ class CategorieSerializer(serializers.ModelSerializer):
         model = Categorie
         fields = ["id",
                   "nom",
-                  "libelle",
+                  "description",
                   ]
 
 
 class ProduitSerializer(serializers.ModelSerializer):
-    categories = CategorieSerializer(many=True)
-
     class Meta:
         model = Produit
         fields = ["id",
@@ -22,39 +24,31 @@ class ProduitSerializer(serializers.ModelSerializer):
                   "prix",
                   "ingredients",
                   "categories",
-                  "image_url",
+                  "disponibilite",
+                  "image",
                   ]
 
 
-class Ingredient_infoSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Ingredient_info
-        fields = ["id",
-                  "description"
-                  ]
 
 
 class IngredientSerializer(serializers.ModelSerializer):
-    ingredient_info = Ingredient_infoSerializer()
-
     class Meta:
         model = Ingredient
-        fields = ["id",
-                  "ingredient_info"
-                  ]
+        fields = [
+            "id",
+            "nom",
+            "description",
+        ]
+
 
 
 class MenuSerializer(serializers.ModelSerializer):
-    produits = ProduitSerializer(many=True)
-    categories = CategorieSerializer(many=True)
-
     class Meta:
         model = Menu
         fields = ["id",
                   "nom",
                   "description",
-                  "image_url",
+                  "image",
                   "prix",
                   "produits",
-                  "categories"
                   ]
