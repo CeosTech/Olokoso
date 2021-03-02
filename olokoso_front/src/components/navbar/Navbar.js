@@ -53,11 +53,10 @@ const NavBar = () => {
     smoothScroll(id)(e);
   };
 
-  const pushToHome = (id) => (e) => {
-    history.push("/");
+  const redirectTo = (id, path) => (e) => {    
+    history.push(path);
     IsActiveButton(id)(e);
-    // smoothScroll(id)(e);
-  };
+  }
 
   const regex = /^\/admin/g;
   if (!location.pathname.match(regex)) {
@@ -77,7 +76,7 @@ const NavBar = () => {
                 <img className='navbar__logo' src={Logo} alt='Olokoso logo' />
               </a>
             ) : (
-              <Link to='/' onClick={pushToHome("home")}>
+              <Link to='/' onClick={redirectTo("home", "/")}>
                 <img className='navbar__logo' src={Logo} alt='Olokoso logo' />
               </Link>
             )}
@@ -91,9 +90,8 @@ const NavBar = () => {
                 return (
                   <div
                     key={link.path}
-                    className={`${link.active ? "active" : ""
-                  }navbar__links-basket`}
-                    onClick={pushToHome(link.id)}
+                    onClick={IsActiveButton(link.id)}                    
+                    className={`${link.active && location.pathname === link.path ? "active" : ""}navbar__links-basket`}
                     style={{
                       display: "flex",
                       alignItems: "center",
@@ -161,7 +159,7 @@ const NavBar = () => {
                        href={"#" + link.id}
                        key={link.nom}
                        className={link.active ? "active" : undefined}
-                       onClick={pushToHome(link.id)}>
+                       onClick={redirectTo(link.id, link.path)}>
                         {link.nom}
                      </a>
                    );
@@ -169,15 +167,17 @@ const NavBar = () => {
 
               // Case for other links, that are neither in the homepage, nor the basket.
               else {
+                console.log('le click :: ' + JSON.stringify(link))
                 return (
                   <Link
                     to={link.path}
                     key={link.path}
                     className={
-                      link.active ? "active" : undefined
+                      link.active  && location.pathname === link.path ? "active" : undefined
                     }
-                    onClick={IsActiveButton(link.id)}>
-                    {link.nom}
+                      onClick={redirectTo(link.id, link.path)}
+                    >
+                      {link.nom}
                   </Link>
                 );
               }
