@@ -1,9 +1,74 @@
 
+.team{
+  
+margin-top: 10%;
+  /*background-image: url("../../images/carte.jpg");*/
+}
+.team_header{
+  margin-top: 6em;
+  display: flex;
+  align-items: center;
+  justify-content:center;
+
+}
+
 .team_title {
-    margin-top: 60px;
-    text-align: center;
-    color: #FFE000;
+  
+  margin-left: 20px;
+  text-align: center;
+  color: #FFE000;
 }
 .team__logo {
-  margin-top: 70px;
+  
+  align-items: center;
+  position: relative;
+  
 }
+.team__bitmoji {
+  margin-top: -23em;
+  margin-left: 5em;
+  position: absolute;
+  
+}
+
+.team__bitmoji2 {
+  margin-top: -23em;
+  margin-left: 41em;
+  position: absolute;
+  
+}
+.team__bitmoji3 {
+  margin-top: -23em;
+  margin-left: 78em;
+  position: absolute;
+  
+}
+
+.team_text{
+    /* color: #90d9f1 !important; */
+    font-size: 1rem !important;
+    text-align: center;
+    font-weight: 80 !important;
+    color:black;
+    margin-bottom: 4em;
+    margin-left: 13em;
+  }
+
+  .team_description{
+    /* color: #90d9f1 !important; */
+    font-size: 1.1rem !important;
+    font-weight: 80 !important;
+    color:black;
+    margin-bottom: 5em;
+    margin-left: 2em;
+  }
+
+  .team_figure {
+    
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+    flex-wrap: wrap;
+    margin-bottom: 3em;
+
+  }
