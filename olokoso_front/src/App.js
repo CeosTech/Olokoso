@@ -7,6 +7,10 @@ import Home from "./pages/Home";
 import Commander from "./pages/Commander";
 import Panier from "./pages/Panier";
 import Contact from "./pages/Contact";
+import Equipe from "./pages/Equipe";
+import Valeurs from "./pages/Valeurs";
+import Restaurant from "./pages/Restaurant";
+import Galerie from "./pages/Galerie";
 import Alerts from "./components/alert/Alerts";
 
 // Bootstrap
@@ -33,10 +37,16 @@ function App() {
           <NavBar />
         </NavBarContextProvider>
         <Switch>
-          <Route exact path='/' component={Home} />
+          <Route exact path='/'>
+            <Home />
+            <Equipe />   
+            <Valeurs />
+            <Restaurant />
+            <Galerie />
+          </Route>
           <Route exact path='/commander' component={Commander} />
-          <Route exact path='/contact' component={Contact} />
           <Route exact path='/panier' component={Panier} />
+          <Route exact path='/contact' component={Contact} />
           <Route exact path='/paiement'>
             <Elements stripe={stripePromise}>
               <Paiement />
