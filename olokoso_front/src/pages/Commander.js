@@ -21,8 +21,9 @@ const Commander = () => {
   useEffect(() => {
     const fetchData = async () => {
       const { data } = await axios.get(
-        "http://localhost:8000/restaurant/produit/" // url à modifier
+        "http://localhost:8000/restaurant/produit/"
       );
+      console.log('les datas reçues :: ' + JSON.stringify(data))
       setDatas(data);
     };
 
@@ -70,84 +71,17 @@ const Commander = () => {
   );
 };
 
-// const datas = [
-//   {
-//     id: 1,
-//     title: "Frenchies",
-//     prix: 11.99,
-//     img: frenchies,
-//     categ: "burgers",
-//   },
-//   {
-//     id: 2,
-//     title: "Cosa Nostra",
-//     prix: 11.99,
-//     img: CosaNostra,
-//     categ: "burgers",
-//   },
-//   {
-//     id: 3,
-//     title: "Texas Ranger",
-//     prix: 15.99,
-//     img: TexasRanger,
-//     categ: "burgers",
-//   },
-//   {
-//     id: 4,
-//     title: "Frenchies",
-//     prix: 11.99,
-//     img: frenchies,
-//     categ: "burgers",
-//   },
-//   {
-//     id: 5,
-//     title: "Frenchies",
-//     prix: 11.99,
-//     img: frenchies,
-//     categ: "burgers",
-//   },
-//   {
-//     id: 6,
-//     title: "Frenchies",
-//     prix: 11.99,
-//     img: frenchies,
-//     categ: "burgers",
-//   },
-//   {
-//     id: 7,
-//     title: "Frenchies",
-//     prix: 11.99,
-//     img: frenchies,
-//     categ: "burgers",
-//   },
-//   {
-//     id: 8,
-//     title: "Frenchies",
-//     prix: 11.99,
-//     img: frenchies,
-//     categ: "burgers",
-//   },
-//   {
-//     id: 9,
-//     title: "Frenchies",
-//     prix: 11.99,
-//     img: frenchies,
-//     categ: "burgers",
-//   },
-//   {
-//     id: 10,
-//     title: "Frites",
-//     prix: 3.99,
-//     img: Frites,
-//     categ: "sides",
-//   },
-//   {
-//     id: 11,
-//     title: "Hot Wings",
-//     prix: 7.99,
-//     img: Wings,
-//     categ: "sides",
-//   },
-// ];
+/* const datas = [
+  {
+    "id": 1,
+    "nom": "Escargot doré",
+    "description": "Tout de nacre vêtus, les escargots se prélassent",
+    "prix": 0.0,
+    "ingredients": ['carottes', 'escargots', 'mamaliga'],
+    "categories": ['Entrées'],
+    "disponibilite": true,
+    "image": "http://localhost:8000/440px-Les_escargots.jpg"
+  }
+]; */
 
 export default Commander;

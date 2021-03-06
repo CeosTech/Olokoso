@@ -24,9 +24,10 @@ const Card = ({
   id,
   description,
   ingredients,
-  produits,
   categories,
-  image, // à voir dans le back-end
+  disponibilite,
+  image,
+
 }) => {
   const [show, setShow] = useState(false);
   const dispath = useDispatch();

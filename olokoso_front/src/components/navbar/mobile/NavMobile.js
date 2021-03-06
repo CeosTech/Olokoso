@@ -30,7 +30,7 @@ const sidebar = {
   },
 };
 
-const NavMobile = ({ currentPage, IsActiveButton, activeButton }) => {
+const NavMobile = ({ currentPage, IsActiveButton, activeButton, location }) => {
   const [isOpen, setOpen] = useState(false);
   const containerRef = useRef(null);
   const { height } = useDimensions(containerRef);
@@ -61,6 +61,7 @@ const NavMobile = ({ currentPage, IsActiveButton, activeButton }) => {
         currentPage={currentPage}
         IsActiveButton={IsActiveButton}
         activeButton={activeButton}
+        location = {location}
       />
       <MenuToggle
         isOpen={isOpen}
