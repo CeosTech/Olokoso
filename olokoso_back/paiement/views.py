@@ -14,7 +14,10 @@ import stripe
 stripe.api_key = "sk_test_51IIvIiJnUZH8vWLUYv5UyL8c1xsuic2ukC0MrsaidKHLcroUAcLv9CE8Ufihgy1oHsNkag9GGQBYGkcNk7RI24Kr006AGZODjU"
 
 
-class CreateClientSecret(APIView):
+class CreateClientSecret(generics.ListCreateAPIView):
+    queryset = Client.objects.all()
+    serializer_class = ClientSerializer
+
     def post(self, request):
         try:
             paymentIntent = stripe.PaymentIntent.create(

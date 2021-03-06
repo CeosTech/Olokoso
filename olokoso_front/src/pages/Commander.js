@@ -21,7 +21,7 @@ const Commander = () => {
   useEffect(() => {
     const fetchData = async () => {
       const { data } = await axios.get(
-        "http://localhost:8000/restaurant/carte/" + active + "/"
+        "http://localhost:8000/restaurant/produit/" // url à modifier
       );
       setDatas(data);
     };

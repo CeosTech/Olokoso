@@ -22,6 +22,11 @@ const useStyles = makeStyles({
   heading: {
     fontWeight: "bold",
   },
+
+  rowConfig: {
+    borderWidth: 3,
+  },
+
 });
 
 export default function HistoriqueTable({ commandes }) {
@@ -31,27 +36,25 @@ export default function HistoriqueTable({ commandes }) {
     <TableContainer component={Paper} className={classes.root}>
       <Table className={classes.table} aria-label='simple table'>
         <TableHead>
-          <TableRow>
-            <TableCell className={classes.heading}>Client</TableCell>
+          <TableRow className={classes.rowConfig}>
+          <TableCell className={classes.heading}>Date Commande</TableCell>
             <TableCell className={classes.heading} align='center'>
-              Commande
+              Heure Commande
             </TableCell>
             <TableCell className={classes.heading} align='center'>
-              Date Commande
+              Client
             </TableCell>
             <TableCell className={classes.heading} align='center'>
-              Réglé
+              Service
             </TableCell>
             <TableCell className={classes.heading} align='center'>
-              Détails Commande
+              Prix total
             </TableCell>
           </TableRow>
         </TableHead>
-        <TableBody>
           {commandes?.map((commande) => (
             <HistoriqueTableRow key={commande.id} commande={commande} />
           ))}
-        </TableBody>
       </Table>
     </TableContainer>
   );
