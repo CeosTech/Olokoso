@@ -8,6 +8,8 @@ from restaurant.models import Menu, Produit
 from rest_framework.views import APIView
 from rest_framework.response import Response
 import stripe
+from functools import reduce
+
 # Create your views here.
 
 # mettre en variable d'environnement
@@ -25,6 +27,32 @@ class CreateClientSecret(generics.ListCreateAPIView):
                 currency='eur', receipt_email=request.data.get('email')
             )
             return Response({"clientSecret": paymentIntent['client_secret']})
+        except Exception as e:
+            return Response({"error": str(e)})
+
+
+class ListStripeTransactions(APIView):
+    def post(self, request, *args, **kwargs):
+        try:
+            print(request.data.get('date'))
+            transactions = stripe.BalanceTransaction.list(
+                created=request.data.get('date'))
+
+            def calcul_prix_avec_frais(item):
+                frais_stripe = item.fee
+                # prix_en_usd = (item.amount - frais_stripe ) / 100
+                prix_en_usd = (item.amount) / 100
+                prix_euros = round(prix_en_usd / item.exchange_rate, 2)
+                print(prix_euros)
+                return prix_euros
+
+            amount = reduce(lambda acc, item: acc + calcul_prix_avec_frais(item),
+                            transactions.data, 0)
+            nb_commandes = len(transactions['data'])
+            return Response({"amount": amount,
+                             "nb_commandes": nb_commandes,
+                             #  "transactions": transactions
+                             })
         except Exception as e:
             return Response({"error": str(e)})
 

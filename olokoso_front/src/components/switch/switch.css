@@ -1,0 +1,34 @@
+.switch__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+
+.switch__container-indication {
+  color: #fff;
+  margin-bottom: 0.5rem;
+}
+
+.switch {
+  border-radius: 30px;
+  width: 70px;
+  height: 35px;
+  background-color: #fff;
+  display: flex;
+  padding: 3px 5px;
+  border: 1px solid rgb(54, 54, 54);
+}
+.switch-round {
+  width: 50%;
+  border-radius: 50%;
+  background-color: #ec412a;
+}
+
+.switch.active {
+  justify-content: flex-end;
+}
+.switch.active .switch-round {
+  background-color: #4cbc4a;
+}

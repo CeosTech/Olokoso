@@ -14,8 +14,9 @@ urlpatterns = [
     path('commande-encours', views.CommandeEnCours.as_view()),
     path('historique-commande', views.HistoriqueCommande.as_view()),
     path('paniers/', views.PanierView.as_view()),  # /paiement/paniers
-    path('create-client-secret', views.CreateClientSecret.as_view())
+    path('create-client-secret', views.CreateClientSecret.as_view()),
     # /paiement/paniers-items
     # path('paniers-items/', views.Panier_itemView.as_view()),
-
+    path('stripe/transactions',
+         views.ListStripeTransactions.as_view())
 ]

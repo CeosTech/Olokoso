@@ -9,9 +9,6 @@ import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import HistoriqueTableRow from "./HistoriqueTableRow";
 const useStyles = makeStyles({
-  table: {
-    minWidth: 650,
-  },
   root: {
     display: "flex",
     flexWrap: "wrap",

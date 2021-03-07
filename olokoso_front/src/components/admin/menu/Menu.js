@@ -5,7 +5,8 @@ import { useState } from "react";
 
 import "./menu.css";
 import { IconButton } from "@material-ui/core";
-import { useHistory, useRouteMatch } from "react-router-dom";
+import { Switch, useHistory, useRouteMatch } from "react-router-dom";
+import SwitchBtn from "../../switch/SwitchBtn";
 
 const AdminNav = () => {
   const admin = useSelector(selectAdmin);
@@ -16,22 +17,19 @@ const AdminNav = () => {
   const [open, setOpen] = useState(true);
   const [active, setActive] = useState(false);
 
+  console.log(active);
+
+  // active
+  //   ? (window.document.body.style.overflow = "hidden")
+  //   : (window.document.body.style.overflow = "auto");
+
   return (
     <div className={"adminNav " + (active ? "active" : "")}>
       <div className='adminNav__header'>
         <img src={Logo} alt='olokoso' />
       </div>
       {/* Switch pour ouvrir et fermer (close and open restaurant) */}
-      <div className='adminNav__switch__container'>
-        <p className='adminNav__switch__container-indication '>
-          {open ? "ouvert" : "fermé"}
-        </p>
-        <div
-          className={["adminNav__switch", open ? "active" : ""].join(" ")}
-          onClick={() => setOpen(!open)}>
-          <div className='adminNav__switch-round'></div>
-        </div>
-      </div>
+      <SwitchBtn />
       <div className='adminNav__links'>
         {admin.pages.map((page) => (
           <button
@@ -43,6 +41,7 @@ const AdminNav = () => {
             onClick={() => {
               dispatch(changePage(page.name));
               history.push(path + page.path);
+              setActive(false);
             }}>
             <i className={"fas adminNav__link__icone " + page.icone}></i>{" "}
             <p>{page.libelle}</p>

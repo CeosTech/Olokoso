@@ -101,13 +101,7 @@ const Product = ({
           <ExpandedIcon expanded={expanded} setExpanded={setExpanded} />
         </AccordionSummary>
         <AccordionDetails>
-          <div
-            style={{
-              width: "60%",
-              margin: "auto",
-              display: "flex",
-              flexDirection: "column",
-            }}>
+          <div className='product__container'>
             {/* <CommandeList commandeItem={commande.panier.produits} /> */}
             <div className='commande__product'>
               {commande.panier.menus.map((menu) => (

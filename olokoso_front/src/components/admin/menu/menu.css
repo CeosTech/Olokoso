@@ -1,5 +1,4 @@
 .adminNav {
-  width: 20%;
   /* display: flex;
   flex-direction: column; */
   padding: 10px;
@@ -10,6 +9,7 @@
   position: sticky;
   top: 0;
   left: 0;
+  width: 20%;
 }
 
 .adminNav.active {
@@ -117,43 +117,10 @@
   color: #fff;
 }
 
-.adminNav.active .adminNav__switch__container {
+.adminNav.active .switch__container {
   display: none;
 }
 
-.adminNav__switch__container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  margin-bottom: 10px;
-}
-
-.adminNav__switch__container-indication {
-  color: #fff;
-  margin-bottom: 0.5rem;
-}
-
-.adminNav__switch {
-  border-radius: 30px;
-  width: 70px;
-  height: 35px;
-  background-color: #fff;
-  display: flex;
-  padding: 3px 5px;
-}
-.adminNav__switch-round {
-  width: 50%;
-  border-radius: 50%;
-  background-color: #ec412a;
-}
-
-.adminNav__switch.active {
-  justify-content: flex-end;
-}
-.adminNav__switch.active .adminNav__switch-round {
-  background-color: #4cbc4a;
-}
 .adminNav__humburger {
   display: none;
 }
@@ -211,16 +178,31 @@
 }
 @media (max-width: 676px) {
   .adminNav {
-    position: absolute;
+    position: fixed;
     top: 0;
-    left: -500px;
-    width: 50%;
+    left: auto;
+    right: -500px;
+    width: 55%;
     z-index: 99;
+    overflow: auto;
+  }
+  .adminNav::-webkit-scrollbar {
+    width: 10px; /* width of the entire scrollbar */
+  }
+
+  .adminNav::-webkit-scrollbar-track {
+    background: rgb(65, 63, 63); /* color of the tracking area */
+  }
+
+  .adminNav::-webkit-scrollbar-thumb {
+    background-color: rgb(146, 145, 145); /* color of the scroll thumb */
+    /* border-radius: 20px; roundness of the scroll thumb */
+    /* border: 3px solid rgb(0, 0, 0); creates padding around scroll thumb */
   }
 
   .adminNav.active {
     width: 50%;
-    left: 0;
+    right: 0;
   }
 
   .adminNav__close {
@@ -235,7 +217,7 @@
     display: block;
     position: fixed;
     top: 10px;
-    left: 10px;
+    right: 15px;
     z-index: 99;
   }
   .adminNav.active .adminNav__humburger i {
@@ -254,5 +236,10 @@
 @media (max-width: 676px) {
   .adminNav.active {
     width: 58%;
+  }
+}
+@media (max-width: 500px) {
+  .adminNav.active {
+    width: 100%;
   }
 }
