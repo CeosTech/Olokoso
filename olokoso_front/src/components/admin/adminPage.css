@@ -5,3 +5,8 @@
 .adminPage__container {
   display: flex;
 }
+
+.admin__container {
+  width: 90%;
+  margin: 3rem auto;
+}

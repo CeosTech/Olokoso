@@ -22,49 +22,46 @@ const HistoriqueTableRow = ({ commande }) => {
   //{/*commande.reference*/}
   console.log(commande);
   return (
-    <TableBody>
-      <TableRow>
-        <TableCell>
-          {new Date(commande.date_commande).toLocaleString()}
-        </TableCell>
-        <TableCell align='center'></TableCell>
-        <TableCell align='center'>
-          {commande.client.nom[0] + "." + commande.client.prenom}
-        </TableCell>
-        <TableCell align='center'>{commande.prix_totale}€</TableCell>
-        <TableCell align='center'>
-            {commande.prix_totale}€
-        </TableCell>
+    <TableRow>
+      {/* {new Date(commande.date_commande).toLocaleString()} */}
+      <TableCell>
+        {new Date(commande.date_commande).toLocaleDateString()}
+      </TableCell>
+      <TableCell align='center'>
+        {new Date(commande.date_commande)
+          .toLocaleTimeString()
+          .split(":")
+          .slice(0, 2)
+          .join("h")}
+      </TableCell>
+      <TableCell align='center'>
+        {commande.client.nom[0] + "." + commande.client.prenom}
+      </TableCell>
+      <TableCell align='center'>à emporter</TableCell>
+      <TableCell align='center'>{commande.prix_totale}€</TableCell>
 
-
-
-        <Modal showModal={show} setShowModal={setShow} handleClose={handleClose}>
-          <Modal.Header>
-            <h1>Ref: {commande.reference}</h1>
-            {/* <img src={image_url} alt={nom} />
+      <Modal showModal={show} setShowModal={setShow} handleClose={handleClose}>
+        <Modal.Header>
+          <h1>Ref: {commande.reference}</h1>
+          {/* <img src={image_url} alt={nom} />
             <p>{splitPrix(prix)}</p> */}
-          </Modal.Header>
-          <Modal.Body>
-            <Modal.Body.Heading>Panier</Modal.Body.Heading>
-            {commande.panier.menus.map((menu) => (
-              <p key={commande.id.toString() + menu.id.toString()}>
-                {menu.quantite} {menu.menu.nom}
-              </p>
-            ))}
-            {commande.panier.produits.map((produit) => (
-              <p key={commande.id.toString() + produit.id.toString()}>
-                {produit.quantite} {produit.produit.nom}
-              </p>
-            ))}
-          </Modal.Body>
-          <Modal.Footer></Modal.Footer>
-        </Modal>
-      </TableRow>
-      <TableRow>
-        <TableCell align='center'>multi</TableCell>
-      </TableRow>
-      
-    </TableBody>
+        </Modal.Header>
+        <Modal.Body>
+          <Modal.Body.Heading>Panier</Modal.Body.Heading>
+          {commande.panier.menus.map((menu) => (
+            <p key={commande.id.toString() + menu.id.toString()}>
+              {menu.quantite} {menu.menu.nom}
+            </p>
+          ))}
+          {commande.panier.produits.map((produit) => (
+            <p key={commande.id.toString() + produit.id.toString()}>
+              {produit.quantite} {produit.produit.nom}
+            </p>
+          ))}
+        </Modal.Body>
+        <Modal.Footer></Modal.Footer>
+      </Modal>
+    </TableRow>
   );
 };
 

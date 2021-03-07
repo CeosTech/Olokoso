@@ -26,7 +26,6 @@ const useStyles = makeStyles({
   rowConfig: {
     borderWidth: 3,
   },
-
 });
 
 export default function HistoriqueTable({ commandes }) {
@@ -37,24 +36,24 @@ export default function HistoriqueTable({ commandes }) {
       <Table className={classes.table} aria-label='simple table'>
         <TableHead>
           <TableRow className={classes.rowConfig}>
-          <TableCell className={classes.heading}>Date Commande</TableCell>
+            <TableCell className={classes.heading}>Date</TableCell>
             <TableCell className={classes.heading} align='center'>
-              Heure Commande
+              Heure
             </TableCell>
             <TableCell className={classes.heading} align='center'>
               Client
             </TableCell>
             <TableCell className={classes.heading} align='center'>
-              Service
+              Méthode de vente
             </TableCell>
             <TableCell className={classes.heading} align='center'>
-              Prix total
+              Montant
             </TableCell>
           </TableRow>
         </TableHead>
-          {commandes?.map((commande) => (
-            <HistoriqueTableRow key={commande.id} commande={commande} />
-          ))}
+        {commandes?.map((commande) => (
+          <HistoriqueTableRow key={commande.id} commande={commande} />
+        ))}
       </Table>
     </TableContainer>
   );

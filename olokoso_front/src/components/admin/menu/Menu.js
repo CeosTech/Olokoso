@@ -1,4 +1,4 @@
-import Logo from "../../../images/logo.png";
+import Logo from "../../../images/olokoso_logo.png";
 import { useDispatch, useSelector } from "react-redux";
 import { selectAdmin, changePage } from "../../../app/Redux-slices/adminSlice";
 import { useState } from "react";
@@ -13,14 +13,25 @@ const AdminNav = () => {
   const history = useHistory();
   const { path } = useRouteMatch();
 
+  const [open, setOpen] = useState(true);
   const [active, setActive] = useState(false);
 
   return (
     <div className={"adminNav " + (active ? "active" : "")}>
       <div className='adminNav__header'>
-        <img src={Logo} alt='' />
+        <img src={Logo} alt='olokoso' />
       </div>
-
+      {/* Switch pour ouvrir et fermer (close and open restaurant) */}
+      <div className='adminNav__switch__container'>
+        <p className='adminNav__switch__container-indication '>
+          {open ? "ouvert" : "fermé"}
+        </p>
+        <div
+          className={["adminNav__switch", open ? "active" : ""].join(" ")}
+          onClick={() => setOpen(!open)}>
+          <div className='adminNav__switch-round'></div>
+        </div>
+      </div>
       <div className='adminNav__links'>
         {admin.pages.map((page) => (
           <button
@@ -38,13 +49,20 @@ const AdminNav = () => {
           </button>
         ))}
       </div>
-
       <div className='adminNav__close'>
-        <IconButton onClick={() => setActive(!active)}>
+        <IconButton
+          className='adminNav__close-btn'
+          onClick={() => setActive(!active)}>
           <i
             className={
               "fas fa-" + (active ? "chevron-right" : "chevron-left")
             }></i>
+        </IconButton>
+      </div>
+
+      <div className='adminNav__humburger'>
+        <IconButton onClick={() => setActive(!active)}>
+          <i className='fas fa-bars'></i>
         </IconButton>
       </div>
     </div>
