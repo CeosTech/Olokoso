@@ -30,6 +30,7 @@ const NavBar = () => {
   const [showBgNavBar, setShowBgNavBar] = useState(false);
   const baskets = useSelector(selectBaskets);
 
+
   
   const changeBackground = () => {
     // console.log(window.scrollY);
@@ -44,7 +45,6 @@ const NavBar = () => {
   window.addEventListener("scroll", changeBackground);
 
   const IsActiveButton = (id) => (e) => {
-    console.log("id :: " + id)
     // setActiveButton(id);
     dispatch({
       id,
@@ -53,11 +53,10 @@ const NavBar = () => {
     smoothScroll(id)(e);
   };
 
-  const pushToHome = (id) => (e) => {
-    history.push("/");
+  const redirectTo = (id, path) => (e) => {    
+    history.push(path);
     IsActiveButton(id)(e);
-    // smoothScroll(id)(e);
-  };
+  }
 
   const regex = /^\/admin/g;
   if (!location.pathname.match(regex)) {
@@ -74,26 +73,24 @@ const NavBar = () => {
           <div className='navbar__logo-container'>
             {location.pathname === "/" ? (
               <a href='#home' onClick={IsActiveButton("home")}>
-                <img className='navbar__logo' src={olokoso_logo} alt='Markus' />
+                <img className='navbar__logo' src={olokoso_logo} alt='Olokosso logo' />
               </a>
             ) : (
-              <Link to='/' onClick={pushToHome("home")}>
+              <Link to='/' onClick={redirectTo("home", "/")}>
                 <img className='navbar__logo' src={Logo} alt='Olokoso logo' />
               </Link>
             )}
           </div>
           <div className='navbar__links'>
             {state.map((link) => {
-              console.log(link)
               
               //Case if the link is 'panier'
               if (link.isBasket) {
                 return (
                   <div
                     key={link.path}
-                    className={`${link.active ? "active" : ""
-                  }navbar__links-basket`}
-                    onClick={pushToHome(link.id)}
+                    onClick={IsActiveButton(link.id)}                    
+                    className={`${link.active && location.pathname === link.path ? "active" : ""}navbar__links-basket`}
                     style={{
                       display: "flex",
                       alignItems: "center",
@@ -157,28 +154,50 @@ const NavBar = () => {
               //Case if the link is in the Home one page : allows to mark the clicked link as active (hence highlighting it in the navbar)
               else if (link.estDansHome) {
                    return (
-                     <a
-                       href={"#" + link.id}
-                       key={link.nom}
-                       className={link.active ? "active" : undefined}
-                       onClick={pushToHome(link.id)}>
-                        {link.nom}
-                     </a>
+                    <div
+                      key={link.nom}
+                      onClick={IsActiveButton(link.id)}
+                      className={link.active && location.pathname === link.path ? "active" : undefined}
+                    >
+                      <Link
+                        to={link.path}
+                        //href={"#" + link.id}
+                        key={link.nom}
+                        className={link.active && location.pathname === link.path ? "active" : undefined}
+                      >
+                          {link.nom}
+                      </Link>
+                     </div>
                    );
               }
 
               // Case for other links, that are neither in the homepage, nor the basket.
               else {
                 return (
-                  <Link
+                  <div
+                    key={link.path}
+                    onClick={IsActiveButton(link.id)}
+                    className={link.active || location.pathname === link.path ? "active" : undefined}
+                  >
+                    <Link
+                      to={link.path}
+                      //href={"#" + link.id}
+                      key={link.nom}
+                      className={link.active || location.pathname === link.path? "active" : undefined}
+                    >
+                        {link.nom}
+                    </Link>
+                 </div>
+                  /*<Link
                     to={link.path}
                     key={link.path}
                     className={
-                      link.active ? "active" : undefined
+                      link.active  && location.pathname === link.path ? "active" : undefined
                     }
-                    onClick={IsActiveButton(link.id)}>
-                    {link.nom}
-                  </Link>
+                      onClick={redirectTo(link.id, link.path)}
+                    >
+                      {link.nom}
+                  </Link>*/
                 );
               }
 
@@ -191,7 +210,8 @@ const NavBar = () => {
           <NavMobile
             currentPage={currentPage}
             IsActiveButton={IsActiveButton}
-            // activeButton={activeButton}
+            location = {location}
+            //activeButton={activeButton}
           />
         </div>
       </nav>

@@ -29,29 +29,56 @@ export const MenuItem = ({
   active,
   id,
   IsActiveButton,
+  location,
 }) => {
+
+  const createLink = () => {
+    if(estDansHome){
+      return (
+        <div
+          key={nom}
+          onClick={IsActiveButton(id)}
+          className={active && location.pathname === path ? "active" : undefined}
+        >
+          <Link
+            to={path}            
+            onClick={toggleOpen}
+            key={nom}
+            className={active && location.pathname === path ? "active" : undefined}
+          >
+              {nom}
+          </Link>
+          </div>
+      )
+    }
+    else {
+      return (
+        <div
+          key={path}
+          onClick={IsActiveButton(id)}
+          className={active || location.pathname === path ? "active" : undefined}
+        >
+          <Link
+            to={path}            
+            onClick={toggleOpen}
+            key={nom}
+            className={active || location.pathname === path ? "active" : undefined}
+          >
+              {nom}
+          </Link>
+        </div>
+      )
+    }
+  }
+
   return (
     <motion.li
       variants={variants}
       whileHover={{ scale: 1.1 }}
-      whileTap={{ scale: 0.95 }}>
-      <Link
-        onClick={toggleOpen}
-        to={path}
-        className={currentPage === path ? "active" : undefined}>
-        {nom}
-      </Link>
-      {/* <a
-        href={"#" + id}
-        key={nom}
-        // className={id === activeButton ? "active" : undefined}
-        className={active ? "active" : undefined}
-        onClick={(e) => {
-          toggleOpen();
-          IsActiveButton(id)(e);
-        }}>
-        {nom}
-      </a> */}
+      whileTap={{ scale: 0.95 }}
+    >     
+      {createLink()}   
+      
     </motion.li>
   );
 };
