@@ -70,6 +70,12 @@ function getNombresArticles(baskets = []) {
   return baskets.reduce((total, product) => total + product.quantite, 0);
 }
 
+function getPrixAvecTTC(prixHT, TVA) {
+  const montantTva = prixHT * (TVA / 100);
+  const prixTTC = prixHT + montantTva;
+  return +prixTTC.toFixed(2);
+}
+
 export {
   isIntersecting,
   debounce,
@@ -78,4 +84,5 @@ export {
   splitPrix,
   getNombresArticles,
   calculPrixProduitAvecQuantite,
+  getPrixAvecTTC,
 };

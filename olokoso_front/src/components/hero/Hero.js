@@ -4,8 +4,8 @@ import "./hero.css";
 import olokoso_logo from "../../images/olokoso_logo.png";
 import mafe_lover from "../../images/mafe-lover.png";
 import yassa_lover from "../../images/yassa-lover.png";
+import photo_traiteur from "../../images/traiteur-photo.jpg";
 import Carousel from "react-bootstrap/Carousel";
-import Logo from "../../images/logo.png";
 
 import { Link } from "react-router-dom";
 
@@ -17,7 +17,7 @@ const datas = [
     texte:
     "O'Lokoso est une ode gustative à l'Afrique de l'Ouest. Nous vous proposons des plats issus de la culture Africaine avec une touche qui fait toute la différence !🔥🔥🔥",
     image: olokoso_logo,
-    alt: "burger",
+    alt: "Olokosso logo",
     lien: { route: "/commander", nom: "Commander" },
   },
   {
@@ -27,7 +27,7 @@ const datas = [
     texte:
     "Ce plat typique d'Afrique de l'Ouest connu pour sa fameuse sauce à base de pâte d'arachide va vous rendre totalement love !!❤️❤️❤️ ",
     image: mafe_lover,
-    alt: "texas",
+    alt: "photo de plat",
     lien: { route: "/commander", nom: "Commander" },
   },
   {
@@ -37,7 +37,7 @@ const datas = [
       texte:
       "Des oignons frits, du riz, du poulet braisé mariné dans le citron... \n Le yassa vous attend pour nourrir de joie vos papilles 🚀🚀🚀 ",
     image: yassa_lover,
-    alt: "texas",
+    alt: "photo de plat",
     lien: { route: "/commander", nom: "Commander" },
   },
   {
@@ -45,10 +45,10 @@ const datas = [
     sous_texte:
       "Prestation traiteur",
       texte:
-      "Des oignons frits, du riz, du poulet braisé mariné dans le citron... \n Le yassa vous attend pour nourrir de joie vos papilles 🚀🚀🚀 ",
-    
-    alt: "texas",
-    lien: { route: "/commander", nom: "Contactez-nous" },
+      "Une prestation traiteur sur mesure pour agrémenter vos événements",
+    image: photo_traiteur,   
+    alt: "photo de plats à emporter",
+    lien: { route: "/contact", nom: "Contactez-nous" },
   },
 ];
 

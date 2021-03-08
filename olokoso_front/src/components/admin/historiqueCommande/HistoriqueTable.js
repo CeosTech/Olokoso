@@ -9,9 +9,6 @@ import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import HistoriqueTableRow from "./HistoriqueTableRow";
 const useStyles = makeStyles({
-  table: {
-    minWidth: 650,
-  },
   root: {
     display: "flex",
     flexWrap: "wrap",
@@ -22,6 +19,10 @@ const useStyles = makeStyles({
   heading: {
     fontWeight: "bold",
   },
+
+  rowConfig: {
+    borderWidth: 3,
+  },
 });
 
 export default function HistoriqueTable({ commandes }) {
@@ -31,27 +32,25 @@ export default function HistoriqueTable({ commandes }) {
     <TableContainer component={Paper} className={classes.root}>
       <Table className={classes.table} aria-label='simple table'>
         <TableHead>
-          <TableRow>
-            <TableCell className={classes.heading}>Client</TableCell>
+          <TableRow className={classes.rowConfig}>
+            <TableCell className={classes.heading}>Date</TableCell>
             <TableCell className={classes.heading} align='center'>
-              Commande
+              Heure
             </TableCell>
             <TableCell className={classes.heading} align='center'>
-              Date Commande
+              Client
             </TableCell>
             <TableCell className={classes.heading} align='center'>
-              Réglé
+              Méthode de vente
             </TableCell>
             <TableCell className={classes.heading} align='center'>
-              Détails Commande
+              Montant
             </TableCell>
           </TableRow>
         </TableHead>
-        <TableBody>
-          {commandes?.map((commande) => (
-            <HistoriqueTableRow key={commande.id} commande={commande} />
-          ))}
-        </TableBody>
+        {commandes?.map((commande) => (
+          <HistoriqueTableRow key={commande.id} commande={commande} />
+        ))}
       </Table>
     </TableContainer>
   );

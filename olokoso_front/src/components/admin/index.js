@@ -38,14 +38,13 @@ const AdminPage = () => {
 
   return (
     <div className='adminPage'>
-      <IconButton className={classes.root}>
+      {/* <IconButton className={classes.root}>
         <ExitToAppIcon style={{ fontSize: 40 }} />
-      </IconButton>
+      </IconButton> */}
 
       <div className='adminPage__container'>
         <AdminNav />
         <div style={{ flex: 1, padding: "1rem", width: "100%" }}>
-          {/* TODO:  */}
           <Switch>
             <Route exact path={path + "/nouvelles-commandes"}>
               <NouvelleCommande />

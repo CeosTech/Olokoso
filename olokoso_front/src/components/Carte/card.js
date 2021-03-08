@@ -1,5 +1,5 @@
 import { useState } from "react";
-import burger from "../../images/menu-burger.png";
+import burger from "../../images/mafe-lover.png";
 import ModalBootsrap from "../modal/Modal";
 import "./card.css";
 
@@ -24,9 +24,10 @@ const Card = ({
   id,
   description,
   ingredients,
-  produits,
   categories,
-  image_url,
+  disponibilite,
+  image,
+
 }) => {
   const [show, setShow] = useState(false);
   const dispath = useDispatch();
@@ -59,7 +60,7 @@ const Card = ({
       onMouseLeave={() => setShowButton(false)}>
       <h1 className='card__item__heading'>{nom}</h1>
       <div className='card__item__image-container'>
-        <img src={image_url} alt={nom} />
+        <img src={image} alt={nom} />
       </div>
       <div className='card__item__details'>
         <p>
@@ -79,14 +80,14 @@ const Card = ({
                 dispath(
                   addProduct({
                     nom,
-                    image_url,
+                    image,
                     prix,
                     id,
                     quantite: 1,
                     categories,
                   })
                 );
-                dispath(addAlert({ nom, image_url, id: uuidv4() }));
+                dispath(addAlert({ nom, image, id: uuidv4() }));
               }}>
               <OverlayTrigger
                 placement='top'
@@ -110,7 +111,7 @@ const Card = ({
       <Modal showModal={show} setShowModal={setShow} handleClose={handleClose}>
         <Modal.Header>
           <h1>{nom}</h1>
-          <img src={image_url} alt={nom} />
+          <img src={image} alt={nom} />
           <p>{splitPrix(prix)}</p>
         </Modal.Header>
         <Modal.Body>
@@ -149,9 +150,9 @@ const Card = ({
             disabled={quantite === 0}
             onClick={() => {
               dispath(
-                addProduct({ nom, image_url, prix, id, quantite, categories })
+                addProduct({ nom, image, prix, id, quantite, categories })
               );
-              dispath(addAlert({ nom, image_url, id: uuidv4() }));
+              dispath(addAlert({ nom, image, id: uuidv4() }));
               setQuantite(1);
             }}
             variant='contained'

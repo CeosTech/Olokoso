@@ -1,0 +1,176 @@
+.commande__product-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.commande__product-container > div {
+  display: flex;
+  align-items: center;
+}
+
+.commande__product h2 {
+  font-size: 1.3rem;
+  margin: 0;
+}
+.commande__product-nom {
+  margin: 0 0 0 1.5rem !important;
+}
+
+.commande__prix {
+  font-size: 1.4rem;
+}
+
+.commande__product-quantite {
+  color: rgb(53, 49, 49);
+}
+.commande__totale {
+  margin: 10px 0;
+  width: 100%;
+}
+.commande__totale__sous-totale,
+.commande__totale-ttc {
+  width: 25%;
+  display: flex;
+  justify-content: space-between;
+  margin-left: auto;
+  padding-top: 5px;
+  border-top: 1px solid black;
+}
+.commande__totale-ttc {
+  padding-top: 0;
+}
+.commande__totale-ttc p {
+  font-size: 1.3rem;
+}
+.commande__totale-ttc p span {
+  font-size: 0.9rem;
+}
+.commande__totale-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.commande__totale-mode__container {
+  display: flex;
+  align-items: center;
+}
+.commande__totale-mode {
+  margin: 0 1rem 0 0;
+  font-size: 1.7rem;
+  color: #ec412a;
+  font-weight: 700;
+}
+
+.commande__ref {
+  margin: 0;
+  font-size: 15px;
+}
+.commande__totale-ttc {
+  border: none;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+.commande__totale-ttc p {
+  margin: 0;
+}
+
+.commande__client p {
+  margin-bottom: 5px;
+}
+
+.commande__client__nom {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.commande__client__adresse,
+.commande__client__telephone {
+  font-size: 1.2rem;
+}
+
+.commande__client__telephone {
+  text-decoration: underline;
+}
+
+.commande__valider_btn {
+  margin: auto !important;
+  background-color: #ec412a !important;
+}
+
+.commande__valider_btn.terminer {
+  background-color: #4cbc4a !important;
+}
+
+.product__container {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  max-width: 650px;
+  width: 100% !important;
+}
+
+@media (max-width: 1004px) {
+  .commande__totale__sous-totale,
+  .commande__totale-ttc {
+    width: 30%;
+    display: flex;
+    justify-content: space-between;
+  }
+}
+@media (max-width: 906px) {
+  .commande__totale-ttc p {
+    font-size: 1.2rem;
+  }
+
+  .commande__totale__sous-totale p {
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+  }
+}
+@media (max-width: 861px) {
+  .commande__prix {
+    font-size: 1.1rem;
+  }
+
+  .commande__totale-mode {
+    font-size: 1.4rem;
+  }
+
+  .commande__totale-ttc p {
+    font-size: 1.1rem;
+  }
+  .commande__totale-ttc p span {
+    font-size: 0.7rem;
+  }
+
+  .commande__totale__sous-totale p {
+    font-size: 0.8rem;
+    margin-bottom: 5px;
+  }
+
+  .commande__product h2 {
+    font-size: 1.1rem;
+    margin: 0;
+  }
+  .commande__client__nom {
+    font-size: 1.3rem;
+    font-weight: 700;
+  }
+
+  .commande__client__adresse,
+  .commande__client__telephone {
+    font-size: 1rem;
+  }
+}
+@media (max-width: 796px) {
+  .commande__totale-mode {
+    font-size: 1.1rem;
+  }
+
+  .commande__totale__sous-totale,
+  .commande__totale-ttc {
+    width: 40%;
+  }
+}

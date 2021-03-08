@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import HistoriqueTable from "./HistoriqueTable";
+import ProductList from "../product/ProductList";
 
 const HistoriqueCommande = () => {
   const [commandes, setCommandes] = useState([]);
@@ -19,8 +19,8 @@ const HistoriqueCommande = () => {
   }, []);
 
   return (
-    <div className='historiqueCommande'>
-      <HistoriqueTable commandes={commandes} />
+    <div className='historiqueCommande admin__container'>
+      <ProductList commandes={commandes} />
     </div>
   );
 };

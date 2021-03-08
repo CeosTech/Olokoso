@@ -1,16 +1,16 @@
 import { IconButton } from "@material-ui/core";
 import { useEffect, useState } from "react";
-import carteImg from "../../images/menu.png";
+import carteImg from "../../images/olokoso_logo.png";
 
 import "./carte.css";
 
 const Carte = ({ setActive, active, activeCarte, setActiveCarte }) => {
   const [carte, setCarte] = useState([
-    { libelle: "Menus", nom: "menus" },
     { libelle: "Entrées", nom: "entrees" },
-    { libelle: "Burgers", nom: "burgers" },
-    { libelle: "Poutines", nom: "poutines" },
-    { libelle: "Sides", nom: "sides" },
+    { libelle: "Menus", nom: "menus" },
+    { libelle: "Plats", nom: "plats" },
+    { libelle: "Sur Le Grill", nom: "grill" },
+    { libelle: "Accompagnements", nom: "accompagnements" },
     { libelle: "Desserts", nom: "desserts" },
     { libelle: "Boissons", nom: "boissons" },
   ]);
@@ -18,8 +18,10 @@ const Carte = ({ setActive, active, activeCarte, setActiveCarte }) => {
   return (
     <div className={"carte " + (activeCarte ? "active" : null)}>
       <div className='carte__image-container'>
-        <img src={carteImg} alt='carte_img' />
+        <img src={carteImg} alt='olokosso_logo' />
       </div>
+      
+      <h2 className="carte_title">Notre carte</h2>
 
       <div className='carte__items'>
         {carte.map((carte) => (

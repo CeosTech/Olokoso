@@ -48,7 +48,7 @@ class Panier_produit(models.Model):
         return round(self.produit.prix * self.quantite, 2)
 
 
-class Panier(models.Model):
+class Panier(models.Model): # Posibilité de l'ajouter aux champs des tables Produit et Menu
     # id = models.AutoField(primary_key=True)
     # panier_items = models.ManyToManyField(Panier_item)
     produits = models.ManyToManyField(Panier_produit, blank=True)
@@ -74,6 +74,7 @@ class Client(models.Model):
         return self.nom + ' ' + self.prenom
 
 
+
 class Commande(models.Model):
     # code = models.CharField(
     #     max_length=5, default=generate_code,  blank=True, unique=True, null=True)
@@ -82,10 +83,13 @@ class Commande(models.Model):
     client = models.ForeignKey(Client, on_delete=models.SET_NULL, null=True)
     panier = models.ForeignKey(Panier, on_delete=models.CASCADE, null=True)
     prix_totale = models.FloatField(default=0.0)
+
     est_vue = models.BooleanField(default=False)
     est_livre = models.BooleanField(default=False)
+
     reference = models.CharField(
         default='', max_length=5, null=True)
+
 
     def __str__(self):
         return str(self.id)

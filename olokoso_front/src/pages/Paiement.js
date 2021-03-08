@@ -65,14 +65,15 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+// variable arbitraire pour effectuer des tests
 const initial = {
-  nom: "",
-  prenom: "",
-  email: "",
-  num_tel: "",
-  adresse: "",
-  ville: "",
-  code_postale: "",
+  nom: "Mister",
+  prenom: "Test",
+  email: "mrtest@test.com",
+  num_tel: "0612345678",
+  adresse: "43 rue des Tests",
+  ville: "TestCity",
+  code_postale: "12345",
 };
 
 const Paiement = () => {
@@ -160,6 +161,7 @@ const Paiement = () => {
     setError(event.error ? event.error.message : "");
   };
 
+  // Fonction liée au paiement ainsi qu'à l'enregistrement des infos du clients
   const Payer = async (e) => {
     e.preventDefault();
 

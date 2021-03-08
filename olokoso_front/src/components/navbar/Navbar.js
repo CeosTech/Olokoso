@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useMemo, useState } from "react";
-import Logo from "../../images/logo.png";
+import Logo from "../../images/olokoso_logo.png";
 import "./navbar.css";
 import olokoso_logo from "../../images/olokoso_logo.png";
 import { Link, useLocation, useHistory } from "react-router-dom";
@@ -19,6 +19,7 @@ import { useSelector } from "react-redux";
 import { selectBaskets } from "../../app/Redux-slices/basketsSlice";
 import { IconButton } from "@material-ui/core";
 import { OverlayTrigger, Popover } from "react-bootstrap";
+import SwitchBtn from "../switch/SwitchBtn";
 
 const NavBar = () => {
   const nav = useRef(null);
@@ -30,8 +31,6 @@ const NavBar = () => {
   const [showBgNavBar, setShowBgNavBar] = useState(false);
   const baskets = useSelector(selectBaskets);
 
-
-  
   const changeBackground = () => {
     // console.log(window.scrollY);
     if (window.scrollY >= 80) {
@@ -40,7 +39,6 @@ const NavBar = () => {
       setShowBgNavBar(false);
     }
   };
-
 
   window.addEventListener("scroll", changeBackground);
 
@@ -53,10 +51,10 @@ const NavBar = () => {
     smoothScroll(id)(e);
   };
 
-  const redirectTo = (id, path) => (e) => {    
+  const redirectTo = (id, path) => (e) => {
     history.push(path);
     IsActiveButton(id)(e);
-  }
+  };
 
   const regex = /^\/admin/g;
   if (!location.pathname.match(regex)) {
@@ -73,7 +71,11 @@ const NavBar = () => {
           <div className='navbar__logo-container'>
             {location.pathname === "/" ? (
               <a href='#home' onClick={IsActiveButton("home")}>
-                <img className='navbar__logo' src={olokoso_logo} alt='Olokosso logo' />
+                <img
+                  className='navbar__logo'
+                  src={olokoso_logo}
+                  alt='Olokosso logo'
+                />
               </a>
             ) : (
               <Link to='/' onClick={redirectTo("home", "/")}>
@@ -81,16 +83,20 @@ const NavBar = () => {
               </Link>
             )}
           </div>
+
           <div className='navbar__links'>
             {state.map((link) => {
-              
               //Case if the link is 'panier'
               if (link.isBasket) {
                 return (
                   <div
                     key={link.path}
-                    onClick={IsActiveButton(link.id)}                    
-                    className={`${link.active && location.pathname === link.path ? "active" : ""}navbar__links-basket`}
+                    onClick={IsActiveButton(link.id)}
+                    className={`${
+                      link.active && location.pathname === link.path
+                        ? "active"
+                        : ""
+                    }navbar__links-basket`}
                     style={{
                       display: "flex",
                       alignItems: "center",
@@ -153,22 +159,28 @@ const NavBar = () => {
 
               //Case if the link is in the Home one page : allows to mark the clicked link as active (hence highlighting it in the navbar)
               else if (link.estDansHome) {
-                   return (
-                    <div
+                return (
+                  <div
+                    key={link.nom}
+                    onClick={IsActiveButton(link.id)}
+                    className={
+                      link.active && location.pathname === link.path
+                        ? "active"
+                        : undefined
+                    }>
+                    <Link
+                      to={link.path}
+                      //href={"#" + link.id}
                       key={link.nom}
-                      onClick={IsActiveButton(link.id)}
-                      className={link.active && location.pathname === link.path ? "active" : undefined}
-                    >
-                      <Link
-                        to={link.path}
-                        //href={"#" + link.id}
-                        key={link.nom}
-                        className={link.active && location.pathname === link.path ? "active" : undefined}
-                      >
-                          {link.nom}
-                      </Link>
-                     </div>
-                   );
+                      className={
+                        link.active && location.pathname === link.path
+                          ? "active"
+                          : undefined
+                      }>
+                      {link.nom}
+                    </Link>
+                  </div>
+                );
               }
 
               // Case for other links, that are neither in the homepage, nor the basket.
@@ -177,17 +189,23 @@ const NavBar = () => {
                   <div
                     key={link.path}
                     onClick={IsActiveButton(link.id)}
-                    className={link.active || location.pathname === link.path ? "active" : undefined}
-                  >
+                    className={
+                      link.active || location.pathname === link.path
+                        ? "active"
+                        : undefined
+                    }>
                     <Link
                       to={link.path}
                       //href={"#" + link.id}
                       key={link.nom}
-                      className={link.active || location.pathname === link.path? "active" : undefined}
-                    >
-                        {link.nom}
+                      className={
+                        link.active || location.pathname === link.path
+                          ? "active"
+                          : undefined
+                      }>
+                      {link.nom}
                     </Link>
-                 </div>
+                  </div>
                   /*<Link
                     to={link.path}
                     key={link.path}
@@ -203,14 +221,13 @@ const NavBar = () => {
 
               // return jsx
               // console.log(location.pathname);
-              
             })}
           </div>
 
           <NavMobile
             currentPage={currentPage}
             IsActiveButton={IsActiveButton}
-            location = {location}
+            location={location}
             //activeButton={activeButton}
           />
         </div>

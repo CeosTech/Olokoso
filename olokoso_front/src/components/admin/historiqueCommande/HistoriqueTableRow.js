@@ -1,4 +1,4 @@
-import { IconButton, TableCell, TableRow } from "@material-ui/core";
+import { IconButton, TableCell, TableRow, TableBody } from "@material-ui/core";
 import { useState } from "react";
 import Modal from "../../MyModal/Modal";
 
@@ -19,27 +19,32 @@ const HistoriqueTableRow = ({ commande }) => {
       setShow(false);
     }
   };
-
+  //{/*commande.reference*/}
+  console.log(commande);
   return (
     <TableRow>
-      <TableCell component='th' scope='row'>
+      {/* {new Date(commande.date_commande).toLocaleString()} */}
+      <TableCell>
+        {new Date(commande.date_commande).toLocaleDateString()}
+      </TableCell>
+      <TableCell align='center'>
+        {new Date(commande.date_commande)
+          .toLocaleTimeString()
+          .split(":")
+          .slice(0, 2)
+          .join("h")}
+      </TableCell>
+      <TableCell align='center'>
         {commande.client.nom[0] + "." + commande.client.prenom}
       </TableCell>
-      <TableCell align='center'>{commande.reference}</TableCell>
-      <TableCell align='center'>
-        {new Date(commande.date_commande).toLocaleString()}
-      </TableCell>
+      <TableCell align='center'>à emporter</TableCell>
       <TableCell align='center'>{commande.prix_totale}€</TableCell>
-      <TableCell align='center'>
-        <IconButton onClick={() => setShow(true)}>
-          <i className='fas fa-eye'></i>
-        </IconButton>
-      </TableCell>
+
       <Modal showModal={show} setShowModal={setShow} handleClose={handleClose}>
         <Modal.Header>
           <h1>Ref: {commande.reference}</h1>
           {/* <img src={image_url} alt={nom} />
-          <p>{splitPrix(prix)}</p> */}
+            <p>{splitPrix(prix)}</p> */}
         </Modal.Header>
         <Modal.Body>
           <Modal.Body.Heading>Panier</Modal.Body.Heading>

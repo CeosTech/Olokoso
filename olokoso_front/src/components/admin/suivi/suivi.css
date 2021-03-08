@@ -1,0 +1,86 @@
+.suivi_activite__jour {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  padding-bottom: 2rem;
+  border-bottom: 2px solid rgb(129, 128, 128);
+}
+
+.suivi_activite__jour__CA,
+.suivi_activite__jour__commandes {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-top: 1rem;
+}
+.suivi_activite__jour__CA-heading span {
+  font-size: 1rem;
+}
+.suivi_activite__jour__CA p,
+.suivi_activite__jour__commandes p {
+  font-size: 1.5rem;
+  margin-bottom: 5px;
+  color: #4cbc4a;
+  font-weight: 700;
+}
+
+.suivi_activite__jour__CA__card,
+.suivi_activite__jour__commandes__card {
+  margin-top: 1rem;
+  padding: 2rem;
+  border: 1px solid #4cbc4a;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+}
+.suivi_activite__jour__CA__card h1,
+.suivi_activite__jour__commandes__card h1 {
+  font-size: 3rem;
+}
+
+.suivi_activite__jour_exacte {
+  margin-top: 2rem;
+}
+
+.suivi_activite__jour_exacte-calendrier {
+  margin: auto;
+  max-width: 300px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.suivi_activite__jour_exacte-calendrier label {
+  margin: 0;
+}
+.suivi_activite__jour_exacte .suivi_activite__jour {
+  border: none;
+}
+
+.suivi_activite__jour_exacte
+  .suivi_activite__jour
+  .suivi_activite__jour__CA__card,
+.suivi_activite__jour_exacte
+  .suivi_activite__jour
+  .suivi_activite__jour__commandes__card {
+  border: 2px solid #c4c4c4;
+}
+
+.suivi_activite__jour_exacte .suivi_activite__jour .suivi_activite__jour__CA p,
+.suivi_activite__jour_exacte
+  .suivi_activite__jour
+  .suivi_activite__jour__commandes
+  p {
+  color: black !important;
+}
+
+@media (max-width: 550px) {
+  .suivi_activite__jour {
+    flex-direction: column;
+  }
+
+  .suivi_activite__jour__commandes {
+    margin-top: 2rem;
+  }
+}

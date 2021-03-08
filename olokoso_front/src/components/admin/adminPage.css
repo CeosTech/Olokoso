@@ -5,3 +5,26 @@
 .adminPage__container {
   display: flex;
 }
+
+.admin__container {
+  width: 90%;
+  margin: 2rem auto 2rem;
+}
+
+@media (max-width: 1250px) {
+  .admin__container {
+    width: 100%;
+    margin: 10px;
+  }
+}
+
+@media (max-width: 1000px) {
+  .admin__container {
+    padding-top: 1rem;
+  }
+}
+@media (max-width: 676px) {
+  .admin__container {
+    padding-top: 2rem;
+  }
+}

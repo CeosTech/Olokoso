@@ -1,19 +1,19 @@
 .adminNav {
-  width: 20%;
-  display: flex;
-  flex-direction: column;
+  /* display: flex;
+  flex-direction: column; */
   padding: 10px;
-  background-color: rgb(46, 46, 46);
+  background-color: #0e0d0d;
   height: 100vh;
   position: relative;
   transition: all 0.3s;
   position: sticky;
   top: 0;
   left: 0;
+  width: 20%;
 }
 
 .adminNav.active {
-  width: 6%;
+  width: 7%;
 }
 
 .adminNav__header {
@@ -28,13 +28,35 @@
 }
 
 .adminNav.active .adminNav__header img {
-  width: 80px;
+  width: 70px;
 }
 
 .adminNav__links {
   display: flex;
   flex-direction: column;
-  padding: 1rem;
+  padding: 0 1rem 1rem 1rem;
+  height: 65vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.adminNav.active .adminNav__links {
+  overflow: hidden;
+  height: max-content;
+}
+
+.adminNav__links::-webkit-scrollbar {
+  width: 5px; /* width of the entire scrollbar */
+}
+
+.adminNav__links::-webkit-scrollbar-track {
+  background: rgb(65, 63, 63); /* color of the tracking area */
+}
+
+.adminNav__links::-webkit-scrollbar-thumb {
+  background-color: rgb(146, 145, 145); /* color of the scroll thumb */
+  /* border-radius: 20px; roundness of the scroll thumb */
+  /* border: 3px solid rgb(0, 0, 0); creates padding around scroll thumb */
 }
 
 .adminNav__link {
@@ -45,11 +67,13 @@
   display: flex;
   align-items: center;
   cursor: pointer !important;
+  background-color: #f7d452;
 }
 
 .adminNav__link p {
   margin: 0;
   opacity: 1;
+  text-align: left;
 }
 
 .adminNav.active .adminNav__link p {
@@ -65,8 +89,7 @@
 }
 
 .adminNav__link.active {
-  background-color: rgb(103, 47, 233);
-  color: rgb(238, 238, 238);
+  background-color: #4cbc4a;
 }
 
 .adminNav__close {
@@ -82,9 +105,141 @@
   right: 0;
 }
 
+.adminNav__close-btn {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
 .adminNav__close i {
   color: rgb(143, 140, 140);
 }
 .adminNav__close i:hover {
   color: #fff;
+}
+
+.adminNav.active .switch__container {
+  display: none;
+}
+
+.adminNav__humburger {
+  display: none;
+}
+@media (max-width: 1502px) {
+  .adminNav {
+    width: 23%;
+  }
+}
+@media (max-width: 1305px) {
+  .adminNav {
+    width: 25%;
+  }
+}
+
+@media (max-width: 1200px) {
+  .adminNav.active {
+    width: 9%;
+  }
+
+  .adminNav {
+    width: 28%;
+  }
+}
+@media (max-width: 1084px) {
+  .adminNav {
+    width: 30%;
+  }
+}
+@media (max-width: 1001px) {
+  .adminNav {
+    width: 33%;
+  }
+}
+@media (max-width: 912px) {
+  .adminNav {
+    width: 35%;
+  }
+}
+@media (max-width: 854px) {
+  .adminNav.active {
+    width: 13%;
+  }
+  .adminNav {
+    width: 40%;
+  }
+}
+@media (max-width: 750px) {
+  .adminNav {
+    width: 45%;
+  }
+
+  .adminNav.active {
+    width: 16%;
+  }
+}
+@media (max-width: 676px) {
+  .adminNav {
+    position: fixed;
+    top: 0;
+    left: auto;
+    right: -500px;
+    width: 55%;
+    z-index: 99;
+    overflow: auto;
+  }
+  .adminNav::-webkit-scrollbar {
+    width: 10px; /* width of the entire scrollbar */
+  }
+
+  .adminNav::-webkit-scrollbar-track {
+    background: rgb(65, 63, 63); /* color of the tracking area */
+  }
+
+  .adminNav::-webkit-scrollbar-thumb {
+    background-color: rgb(146, 145, 145); /* color of the scroll thumb */
+    /* border-radius: 20px; roundness of the scroll thumb */
+    /* border: 3px solid rgb(0, 0, 0); creates padding around scroll thumb */
+  }
+
+  .adminNav.active {
+    width: 50%;
+    right: 0;
+  }
+
+  .adminNav__close {
+    display: none;
+  }
+
+  .adminNav.active .adminNav__close {
+    display: none;
+  }
+
+  .adminNav__humburger {
+    display: block;
+    position: fixed;
+    top: 10px;
+    right: 15px;
+    z-index: 99;
+  }
+  .adminNav.active .adminNav__humburger i {
+    color: #fff;
+  }
+
+  .adminNav.active .adminNav__link p {
+    display: block;
+  }
+
+  .adminNav.active .adminNav__link__icone {
+    margin: 0 10px;
+  }
+}
+
+@media (max-width: 676px) {
+  .adminNav.active {
+    width: 58%;
+  }
+}
+@media (max-width: 500px) {
+  .adminNav.active {
+    width: 100%;
+  }
 }
