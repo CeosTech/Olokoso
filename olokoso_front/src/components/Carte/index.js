@@ -4,16 +4,19 @@ import carteImg from "../../images/olokoso_logo.png";
 
 import "./carte.css";
 
-const Carte = ({ setActive, active, activeCarte, setActiveCarte }) => {
-  const [carte, setCarte] = useState([
-    { libelle: "Entrées", nom: "entrees" },
-    { libelle: "Menus", nom: "menus" },
-    { libelle: "Plats", nom: "plats" },
-    { libelle: "Sur Le Grill", nom: "grill" },
-    { libelle: "Accompagnements", nom: "accompagnements" },
-    { libelle: "Desserts", nom: "desserts" },
-    { libelle: "Boissons", nom: "boissons" },
-  ]);
+const Carte = ({ setActive, active, activeCarte, setActiveCarte, categories }) => {
+
+  const createCategoriesList = categories.map(category => (
+    {
+      libelle: category.nom,
+      nom: category.nom,
+      id: category.id,
+    } 
+  )); 
+
+  const [carte, setCarte] = useState(createCategoriesList); 
+
+  console.log('la carte ::' + JSON.stringify(carte))
 
   return (
     <div className={"carte " + (activeCarte ? "active" : null)}>
@@ -27,9 +30,9 @@ const Carte = ({ setActive, active, activeCarte, setActiveCarte }) => {
         {carte.map((carte) => (
           <p
             key={carte.nom}
-            className={`carte__item ${active === carte.nom ? "active" : ""}`}
+            className={`carte__item ${active === carte.id ? "active" : ""}`}
             onClick={() => {
-              setActive(carte.nom);
+              setActive(carte.id);
               setActiveCarte(false);
             }}>
             {carte.libelle}

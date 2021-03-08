@@ -6,11 +6,7 @@
   height: 80px;
   display: flex;
   width: 100%;
-<<<<<<< HEAD
-  border-bottom: 1px solid white;
-=======
   border-bottom: 1px solid #F7D452;
->>>>>>> 3839228405a52669aa285ef9b117d101f20cabe0
   transition: background-color 0.5s ease;
 }
 

@@ -6,91 +6,73 @@ import Card from "../components/Carte/card";
 
 import "./commander.css";
 
+import {sendrequest} from '../middlewares/request'
+
 import { IconButton } from "@material-ui/core";
-import axios from "axios";
 const Commander = () => {
-  const [active, setActive] = useState("burgers");
+  const [active, setActive] = useState(1);
   const [activeCarte, setActiveCarte] = useState(true);
   const [datas, setDatas] = useState([]);
   const [menuCategories, setMenuCategories] = useState([]);
+
+  // Booleans that will only allow the component to render when the requests have returned the datas
+  const [isDataLoading, setDataLoading] = useState(false);
+  const [isCategoryLoading, setCategoryLoading] = useState(false);
   // activeCarte && (window.document.body.style.overflow = "hidden")
 
   activeCarte
     ? (window.document.body.style.overflow = "hidden")
     : (window.document.body.style.overflow = "auto");
+  
+  const fetchData = async() => {
+    sendrequest('get', 'restaurant/produit/', setDatas, setDataLoading)
+    sendrequest('get', 'restaurant/categorie/', setMenuCategories, setCategoryLoading)
+  }
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const { data } = await axios.get(
-        "http://localhost:8000/restaurant/produit/"
-      );
-      const { categories } = await axios.get(
-        "http://localhost:8000/restaurant/categorie/"
-      );
-      console.log('les datas reçues :: ' + JSON.stringify(data))
-      console.log('les catégories du menu :: ' + JSON.stringify(categories))
-      setDatas(data);
-      setMenuCategories(categories);
-    };
-
+  useEffect(() => {    
     fetchData();
   }, [active]);
 
   return (
     <div className='commander'>
       <div className='commander__container'>
+      
+        {isCategoryLoading && (        
         <Carte
           active={active}
           setActive={setActive}
           activeCarte={activeCarte}
           setActiveCarte={setActiveCarte}
-          {...menuCategories}
+          categories = {menuCategories}
         />
-        <div className='commander__container__cards'>
-          {datas.map((data) => {
-            return <Card 
-                key={data.id} 
-                {...data} />;
-          })}
-          {/* {datas?.product
-            .filter((data) => data.categ === active.toLowerCase())
-            .map((data) => {
-              return <Card key={data.id} {...data} />;
-            })} */}
+        )}
 
-          {/* <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card /> */}
-        </div>
+ {/* Filter will here be used to only display the dishes that belong to the category chosen by the user*/}
+        {isDataLoading && (
+          <>
+            <div className='commander__container__cards'>           
+              {datas.filter(data => data.categories[0] === active).map((data) => {
+                return <Card 
+                    key={data.id} 
+                    {...data} />;
+              })}
+            </div>
 
-        <div className={"commander__carte " + (activeCarte ? "white" : null)}>
-          <IconButton onClick={() => setActiveCarte(() => !activeCarte)}>
-            <i
-              className={
-                "fas fa-arrow-" + (activeCarte ? "left" : "right")
-              }></i>
-          </IconButton>
-        </div>
+            <div className={"commander__carte " + (activeCarte ? "white" : null)}>
+              <IconButton onClick={() => setActiveCarte(() => !activeCarte)}>
+                <i
+                  className={
+                    "fas fa-arrow-" + (activeCarte ? "left" : "right")
+                  }></i>
+              </IconButton>
+            </div> 
+          </>             
+        )}
+      
       </div>
     </div>
   );
 };
 
-/* const datas = [
-  {
-    "id": 1,
-    "nom": "Escargot doré",
-    "description": "Tout de nacre vêtus, les escargots se prélassent",
-    "prix": 0.0,
-    "ingredients": ['carottes', 'escargots', 'mamaliga'],
-    "categories": ['Entrées'],
-    "disponibilite": true,
-    "image": "http://localhost:8000/440px-Les_escargots.jpg"
-  }
-]; */
 
 export default Commander;
