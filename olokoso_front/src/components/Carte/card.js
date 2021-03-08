@@ -66,44 +66,7 @@ const Card = ({
         <p>
           {/* {Prix[0]}€{Prix[1]} */}
           {splitPrix(prix)}
-        </p>
-
-        <AnimatePresence>
-          {showButton && (
-            <motion.div
-              variants={ajoutBtn}
-              initial='from'
-              animate='to'
-              exit='exit'
-              className='card__item__shopping-btn'
-              onClick={() => {
-                dispath(
-                  addProduct({
-                    nom,
-                    image,
-                    prix,
-                    id,
-                    quantite: 1,
-                    categories,
-                  })
-                );
-                dispath(addAlert({ nom, image, id: uuidv4() }));
-              }}>
-              <OverlayTrigger
-                placement='top'
-                delay={{ show: 250, hide: 300 }}
-                trigger={["hover", "focus"]}
-                overlay={<Tooltip>Ajouter au panier</Tooltip>}>
-                <IconButton
-                  color='secondary'
-                  style={{ padding: 0 }}
-                  aria-label='add to shopping cart'>
-                  <AddShoppingCartIcon style={{ fontSize: "25px" }} />
-                </IconButton>
-              </OverlayTrigger>
-            </motion.div>
-          )}
-        </AnimatePresence>
+        </p>      
 
         <i className='fas fa-eye' onClick={() => setShow(true)}></i>
       </div>
@@ -115,11 +78,15 @@ const Card = ({
           <p>{splitPrix(prix)}</p>
         </Modal.Header>
         <Modal.Body>
-          <Modal.Body.Heading>Ingredients utilisés</Modal.Body.Heading>
+          <Modal.Body.Heading>Ingrédients</Modal.Body.Heading>
           <p>Boeuf</p>
           <p>Cheddar</p>
           <p>Salade</p>
         </Modal.Body>
+        <Modal.Footer className="card__item__total__price">
+          <Modal.Body.Heading>Prix Total</Modal.Body.Heading>
+          <p>{(quantite * prix).toFixed(2)}€</p>
+        </Modal.Footer>
         <Modal.Footer>
           <div
             style={{
@@ -154,6 +121,7 @@ const Card = ({
               );
               dispath(addAlert({ nom, image, id: uuidv4() }));
               setQuantite(1);
+              setShow(false);
             }}
             variant='contained'
             color='secondary'

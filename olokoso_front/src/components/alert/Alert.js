@@ -30,7 +30,6 @@ const Alert = ({ image_url, nom, id }) => {
       animate='to'
       initial='from'
       exit='exit'>
-      <img src={image_url} alt={nom} />
       <p>
         {nom} <span>a été ajouté dans votre panier.</span>
       </p>

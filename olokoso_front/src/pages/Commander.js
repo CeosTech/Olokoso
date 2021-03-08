@@ -12,6 +12,7 @@ const Commander = () => {
   const [active, setActive] = useState("burgers");
   const [activeCarte, setActiveCarte] = useState(true);
   const [datas, setDatas] = useState([]);
+  const [menuCategories, setMenuCategories] = useState([]);
   // activeCarte && (window.document.body.style.overflow = "hidden")
 
   activeCarte
@@ -23,8 +24,13 @@ const Commander = () => {
       const { data } = await axios.get(
         "http://localhost:8000/restaurant/produit/"
       );
+      const { categories } = await axios.get(
+        "http://localhost:8000/restaurant/categorie/"
+      );
       console.log('les datas reçues :: ' + JSON.stringify(data))
+      console.log('les catégories du menu :: ' + JSON.stringify(categories))
       setDatas(data);
+      setMenuCategories(categories);
     };
 
     fetchData();
@@ -38,10 +44,13 @@ const Commander = () => {
           setActive={setActive}
           activeCarte={activeCarte}
           setActiveCarte={setActiveCarte}
+          {...menuCategories}
         />
         <div className='commander__container__cards'>
           {datas.map((data) => {
-            return <Card key={data.id} {...data} />;
+            return <Card 
+                key={data.id} 
+                {...data} />;
           })}
           {/* {datas?.product
             .filter((data) => data.categ === active.toLowerCase())
