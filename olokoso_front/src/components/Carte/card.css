@@ -9,6 +9,10 @@
   height: 250px; 
 }
 
+.item_unavailable {
+  opacity: 0.5;
+}
+
 .card__item__heading {
   text-align: center;
   color: rgb(100, 100, 100);

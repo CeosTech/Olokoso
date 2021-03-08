@@ -54,8 +54,10 @@ const Card = ({
   // const Prix = splitPrix(prix);
 
   return (
-    <div
-      className='card__item'
+    
+    // Depending on the availability or not of the item, the css style will vary, thanks to a different className 
+    <div    
+      className={"card__item " + (!disponibilite ? "item_unavailable" : '')}
       onMouseEnter={() => setShowButton(true)}
       onMouseLeave={() => setShowButton(false)}>
       <h1 className='card__item__heading'>{nom}</h1>
@@ -68,7 +70,17 @@ const Card = ({
           {splitPrix(prix)}
         </p>      
 
-        <i className='fas fa-eye' onClick={() => setShow(true)}></i>
+        
+        {/* If the item is available, this will be displayed */}
+        {disponibilite && (
+          <i className='fas fa-eye' onClick={() => setShow(true)}></i>
+        )}
+
+      
+        {/* If the item is non available, this will be displayed */}
+        {!disponibilite && (
+          <p>Produit non disponible</p>
+        )}
       </div>
 
       <Modal showModal={show} setShowModal={setShow} handleClose={handleClose}>
