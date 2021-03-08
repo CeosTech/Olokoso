@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useMemo, useState } from "react";
-import Logo from "../../images/logo.png";
+import Logo from "../../images/olokoso_logo.png";
 import "./navbar.css";
 import olokoso_logo from "../../images/olokoso_logo.png";
 import { Link, useLocation, useHistory } from "react-router-dom";

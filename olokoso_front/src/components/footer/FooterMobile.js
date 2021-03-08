@@ -8,7 +8,7 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
 import googlePlay from "../../images/google-play.svg";
 import appleStore from "../../images/app-store.svg";
-import logo from "../../images/logo.png";
+import logo from "../../images/olokoso_logo.png";
 
 import "./footerMobile.css";
 

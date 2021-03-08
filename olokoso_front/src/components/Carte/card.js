@@ -1,5 +1,5 @@
 import { useState } from "react";
-import burger from "../../images/menu-burger.png";
+import burger from "../../images/mafe-lover.png";
 import ModalBootsrap from "../modal/Modal";
 import "./card.css";
 

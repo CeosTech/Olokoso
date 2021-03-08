@@ -73,7 +73,7 @@
 .hero__entete {
   font-size: 3.8rem ;
   margin-bottom: 2.5rem; 
-  font-family: 'joti-one';
+  font-family: 'Joti One', cursive;
   color:#FFE000;
 }
 
@@ -83,6 +83,7 @@
   margin-bottom: 2rem !important;
   font-weight: 500 !important;
   color:white;
+  font-family: 'Joti One', cursive;
 }
 
 
@@ -144,6 +145,21 @@
 .dot {
   width: 15px !important;
   height: 15px !important;
+}
+
+.carousel-indicators li {
+  border: 1px solid #F7D452 !important;
+  box-sizing: border-box !important;
+  border-radius: 50% !important;
+  height: 22px !important;
+  width: 22px !important;
+  border-radius: 50% !important;
+  margin-left: 6px;
+  margin-right: 6px;
+}
+
+.carousel-indicators .active {
+  background-color: #F7D452 !important;
 }
 
 .carousel-control-next,
