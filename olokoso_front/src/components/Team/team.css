@@ -4,7 +4,7 @@
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
-  margin: 3rem 0;
+  margin: 3rem;
 }
 
 .team_header{
@@ -16,7 +16,7 @@
 }
 
 .team__introduction{
-  max-width: 50%;
+  max-width: 1000px;
 }
 
 .team_title {
@@ -87,7 +87,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-bottom: 2rem;
+    margin: 2rem;
   }
 
   .personnel__container h2 {

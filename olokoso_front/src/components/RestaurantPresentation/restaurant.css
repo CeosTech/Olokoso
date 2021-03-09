@@ -84,7 +84,34 @@
     margin: 5rem 0;
 }
 
+.restaurant__ligne2{
+    display: none;
+}
+
 .restaurant__position {
     width: 50%;
     margin-left: 6rem;
 }
+
+@media screen and (max-width: 1000px) {
+    .restaurant__container {
+      flex-direction: column-reverse;      
+    }
+    .restaurant__ligne {
+        display: none;
+    }
+    .restaurant__position {
+        margin-left: 0px;
+        margin-bottom: 2rem;
+        width: 100%;
+    }
+    .restaurant__informations-container{
+        width: 100%;
+    }
+    .restaurant__ligne2 {
+        display: block;
+        margin: 4rem 0;
+        height: 2px;
+        background-color: #FFE000;
+    }
+  }

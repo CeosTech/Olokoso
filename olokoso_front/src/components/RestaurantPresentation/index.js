@@ -1,8 +1,6 @@
 import React from "react";
 
-import hour from "../../images/Vector.png";
-import delivery from "../../images/logo__delivery.svg";
-import phone from "../../images/logo__phone.svg";
+import Map from "../Map/index";
 
 import "./restaurant.css";
 
@@ -17,6 +15,9 @@ const Restaurant = () => {
       </div>
 
       <div className="restaurant__container">
+        
+        <div className="restaurant__ligne2"></div>
+        
         <div className="restaurant__informations-container">
 
           <div className="restaurant__information">
@@ -70,7 +71,10 @@ const Restaurant = () => {
 
         <div className="restaurant__position">        
           <h3>O'lokoso</h3>
-          <p>114 avenue de verdun,<br/>91550 Paray vieille poste</p>        
+          <p>114 avenue de verdun,<br/>91550 Paray vieille poste</p>  
+
+          {/*The component element for the map*/}
+       
         </div>
 
       </div>

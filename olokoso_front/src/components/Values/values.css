@@ -1,5 +1,5 @@
 .values{  
-padding: 3rem 0;
+padding: 3rem;
 background-color: black;
 }
 
@@ -12,7 +12,7 @@ margin-bottom: 4rem;
 }
 
 .values__introduction{
-max-width: 50%;
+max-width: 1000px;
 }
 
 .values_title {
@@ -83,7 +83,7 @@ position: absolute;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-bottom: 2rem;
+    margin: 2rem;
 }
 
 .values__link-container  {
