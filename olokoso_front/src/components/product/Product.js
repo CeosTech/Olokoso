@@ -15,10 +15,7 @@ const Product = ({ image_url, nom, prix, id, quantite }) => {
   return (
     <div className='product'>
       <img src={image_url} alt={nom} />
-      <div className='product--info'>
-        <p className='product--info-title'>{nom}</p>
-        <p className='product--info-prix'>{splitPrix(prix)}</p>
-      </div>
+      <p className='product--info-title'>{nom}</p>
 
       <div className='product--quantite'>
         <IconButton
@@ -36,6 +33,9 @@ const Product = ({ image_url, nom, prix, id, quantite }) => {
           <AddIcon />
         </IconButton>
       </div>
+        
+      <p className='product--info-prix'>{splitPrix(prix)}</p>
+      
     </div>
   );
 };

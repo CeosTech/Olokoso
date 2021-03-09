@@ -10,25 +10,39 @@ const Team = () => {
   return (
     <div className='team' id='team'>
       <div className='team_header'>
-      <img className='team__logo' src={olokoso_logon} alt='Markus' />
-        <h2 className='team_title'>Notre équipe à votre service</h2>
+        <img className='logo__team-page' src={olokoso_logon} alt='Logo olokoso' />
+        <div className="team__introduction">
+          <h2 className='team_title'>Notre équipe à votre service</h2>        
+          <p className='team_text'>O'lokoso est une équipe de passionnés et   amoureux de la cuisine africaine, formés pour réjouir votre estomac. O'lokoso est une équipe de passionnés et   amoureux de la cuisine africaine, formés pour réjouir votre estomac.
+          </p>
         </div>
-        <p className='team_text'>hdrzgthehsegfjbfjbsilfkbiggrgrgsgrgdgsrgfsgsrgerfsgbefzsgrgesrgregr <br />riugbdkbjkjsfnbkjs
-                                 rggergergegehrhethtrgdsefhufieuzhfiuezsub
-        </p>
+      </div>
         
         <div className='team_figure'>
-        <img className='team__logo' src={figure} alt='Markus' />
-  
-        <img className='team__logo' src={figure} alt='Markus' />
-        <img className='team__logo' src={figure} alt='Markus' />
+          <div className='personnel__container'>
+            <img className='team__logo' src={figure} alt='dessin personnel' />
+            <h2>Tommy</h2>
+            <p className='team__description'>Fondateur et chef de cuisine</p>
+          </div>
+    
+          
+          <div className='personnel__container'>          
+            <img className='team__logo' src={figure} alt='dessin personnel' />
+            <h2>Tommy</h2>
+            <p className='team__description'>Fondateur et chef de cuisine</p>
+          </div>
+          
+          <div className='personnel__container'>  
+            <img className='team__logo' src={figure} alt='dessin personnel' />
+            <h2>Tommy</h2>
+            <p className='team__description'>Fondateur et chef de cuisine</p>
+          </div>
         </div>
         {/*
         <img className='team__bitmoji' src={bitmoji} />
         <img className='team__bitmoji2' src={bitmoji} />
         <img className='team__bitmoji3' src={bitmoji} />
         */}
-        <p className='team_description'>Fondateur et chef de cuisine</p>
   
     </div>
   );

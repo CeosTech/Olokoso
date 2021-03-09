@@ -20,10 +20,11 @@ const Panier = () => {
         </div>
       ) : (
         <div className='panier__container'>
-          <h1>
-            Détail de votre panier ( {getNombresArticles(baskets)} article
-            {getNombresArticles(baskets) > 1 && "s"})
-          </h1>
+          <h1>Détail du panier</h1>
+          <p className="panier__nombre-articles">
+            {getNombresArticles(baskets)} article
+            {getNombresArticles(baskets) > 1 && "s"}
+          </p>
           {baskets.map((product) => {
             return <Product key={product.nom} {...product} />;
           })}
@@ -33,13 +34,21 @@ const Panier = () => {
             <p>{calculTotal(baskets)} €</p>
           </div>
 
+          <div className='panier__choice-delivery'>
+            <input type="radio" id="delivery__1" name="delivery-1" value="Emporter"/>
+            <label for="delivery__1">A emporter</label>
+
+            <input type="radio" id="delivery__2" name="delivery-2" value="Livraison"/>
+            <label for="delivery__2">Livraison</label>
+          </div>
+
           <Button
             onClick={() => history.push("/paiement")}
             type='submit'
             variant='contained'
             color='primary'
             className='panier__container--btn-valider'>
-            Valider Mon Panier
+              Valider Mon Panier
           </Button>
         </div>
       )}

@@ -1,29 +1,42 @@
 
-.team{
-  
-margin-top: 10%;
-  /*background-image: url("../../images/carte.jpg");*/
+.team{  
+  background-image: url("../../images/background-logo.svg");   
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  margin: 3rem 0;
 }
+
 .team_header{
-  margin-top: 6em;
   display: flex;
   align-items: center;
   justify-content:center;
+  margin-bottom: 4rem;
 
+}
+
+.team__introduction{
+  max-width: 50%;
 }
 
 .team_title {
-  
-  margin-left: 20px;
+  font-family: 'Joti One', cursive;
+  font-size: 48px;  
   text-align: center;
   color: #FFE000;
+  margin-bottom: 2rem;
 }
-.team__logo {
-  
+
+.logo__team-page {      
+  width: 188px;
+  height: 167px;
+}
+
+.team__logo {  
   align-items: center;
-  position: relative;
-  
+  position: relative;  
 }
+
 .team__bitmoji {
   margin-top: -23em;
   margin-left: 5em;
@@ -45,30 +58,47 @@ margin-top: 10%;
 }
 
 .team_text{
-    /* color: #90d9f1 !important; */
-    font-size: 1rem !important;
-    text-align: center;
+    /* color: #90d9f1 !important; */    
+    font-size: 24px;
     font-weight: 80 !important;
     color:black;
-    margin-bottom: 4em;
-    margin-left: 13em;
+    text-align: center;
   }
 
-  .team_description{
+  .team__description{
     /* color: #90d9f1 !important; */
     font-size: 1.1rem !important;
     font-weight: 80 !important;
     color:black;
-    margin-bottom: 5em;
-    margin-left: 2em;
   }
 
   .team_figure {
     
     display: flex;
     align-items: center;
-    justify-content:space-between;
+    justify-content:space-around;
     flex-wrap: wrap;
     margin-bottom: 3em;
 
   }
+
+  .personnel__container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2rem;
+  }
+
+  .personnel__container h2 {
+    font-family: 'Joti One', cursive;    
+    font-size: 48px;  
+    color: #FFE000;
+    margin-bottom: 1.5rem;
+  }
+
+@media screen and (max-width: 750px) {
+  .logo__team-page {
+    display: none;
+  }
+}

@@ -1,3 +1,110 @@
-.values_title{
-    margin: 100px,
+.values{  
+padding: 3rem 0;
+background-color: black;
+}
+
+.values_header{
+display: flex;
+align-items: center;
+justify-content:center;
+margin-bottom: 4rem;
+
+}
+
+.values__introduction{
+max-width: 50%;
+}
+
+.values_title {
+font-family: 'Joti One', cursive;
+font-size: 48px;  
+text-align: center;
+color: #FFE000;
+margin-bottom: 2rem;
+}
+
+.logo__values-page {      
+width: 188px;
+height: 167px;
+}
+
+.values__logo {  
+align-items: center;
+position: relative;
+
+}
+.values__bitmoji {
+margin-top: -23em;
+margin-left: 5em;
+position: absolute;
+
+}
+
+.values__bitmoji2 {
+margin-top: -23em;
+margin-left: 41em;
+position: absolute;
+
+}
+.values__bitmoji3 {
+margin-top: -23em;
+margin-left: 78em;
+position: absolute;
+
+}
+
+.values_text{
+    /* color: #90d9f1 !important; */    
+    font-size: 24px;
+    font-weight: 80 !important;
+    color:white;
+    text-align: center;
+}
+
+.values__description{
+    /* color: #90d9f1 !important; */
+    font-size: 24px;
+    font-weight: 80 !important;
+    color:white;
+}
+
+.values_figure {
+    
+    display: flex;
+    align-items: center;
+    justify-content:space-around;
+    flex-wrap: wrap;
+    margin-bottom: 3em;
+
+}
+
+.values__container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.values__link-container  {
+    display: flex;
+    align-items: center;
+}
+
+.values__container h2 {
+    font-family: 'Joti One', cursive;    
+    font-size: 48px;  
+    color: #FFE000;
+    margin-bottom: 1.5rem;
+}
+
+.values__button {
+    display: block;
+    margin: auto;
+}
+  
+@media screen and (max-width: 750px) {
+.logo__values-page {
+    display: none;
+}
 }

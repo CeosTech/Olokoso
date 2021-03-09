@@ -1,13 +1,16 @@
-.product {
+.product {  
+  border-bottom: 1px solid #ccc;
   width: 100%;
-  display: flex;
-  align-items: center;
-  padding: 10px 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  padding: 2rem 0;
 }
 
 .product img {
   max-width: 20%;
   object-fit: contain;
+  justify-self: center;
+  align-self: center;
 }
 
 .product--info {
@@ -24,18 +27,30 @@
 
 .product--info-title {
   font-size: 1.2rem;
+  margin-bottom: 0rem !important;
+  justify-self: center;
+  align-self: center;
 }
 
 .product--info-prix {
-  font-size: 15px;
+  font-size: 1.2rem;
+  justify-self: center;
+  align-self: center;
+  margin-bottom: 0px !important;
 }
 
 .product--quantite {
-  flex: 1;
-  width: 100%;
+  justify-self: center;
+  align-self: center;
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  font-weight: bold;
+  -moz-box-shadow-bottom: 2px 2PX 2px grey;
+  -webkit-box-shadow-bottom: 2px 2px 2px grey;
+  box-shadow: 2px 2px 2px grey;
+  border-radius: 18px;
+  padding: 0.4rem 0;
 }
 .product--quantite button {
   margin: 0 10px;
