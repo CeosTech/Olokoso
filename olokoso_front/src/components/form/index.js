@@ -57,10 +57,12 @@ const useStyles = makeStyles((theme) => ({
 
 const initial = {
   nom: "",
+  prenom: "",
   email: "",
   nomSociete: "",
   numTel: "",
   message: "",
+  prestation: "",
 };
 
 const ContactForm = () => {
@@ -73,7 +75,14 @@ const ContactForm = () => {
   const estValide = (fieldValues = state) => {
     const validator = {};
     if ("nom" in fieldValues)
-      validator.nom = state.nom ? null : "le champ nom est obligatore";
+      validator.nom = state.nom ? null : "Le champ nom est obligatore";
+
+    if ("prenom" in fieldValues)
+      validator.nom = state.nom ? null : "Le champ prenom est obligatore";
+      
+    if ("prestation" in fieldValues)
+    validator.nom = state.nom ? null : "Choisissez une prestation";
+  
 
     if ("message" in fieldValues)
       validator.message =
@@ -81,22 +90,17 @@ const ContactForm = () => {
           ? null
           : "le champ message doit avoir au moins 10 caractères";
 
-    if ("nomSociete" in fieldValues)
-      validator.nomSociete = nomSociete
-        ? null
-        : "le champ nom societé est obligatore";
-
     if ("email" in fieldValues)
       validator.email = /([a-zA-Z0-9-_.+]{4,})@.+\..+/.test(email)
         ? null
-        : "Email n'est pas valide";
+        : "Le mail n'est pas valide";
 
     if ("numTel" in fieldValues)
       validator.numTel = /(?:(\+(\d{1,2})?)[ -]?)?\(?(?<first>\d{3})\)?[-\s]?(\d{3})[- ]?(\d{4})/.test(
         numTel
       )
         ? null
-        : "Numéro de téléphone n'est pas valide";
+        : "Le numéro de téléphone n'est pas valide";
 
     setErrors({ ...validator });
 
@@ -114,7 +118,7 @@ const ContactForm = () => {
     reinitialiserState,
   } = useForm(initial, estValide);
 
-  const { nom, email, nomSociete, numTel, message } = state;
+  const { nom, prenom, email, nomSociete, numTel, message, prestation } = state;
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -149,93 +153,112 @@ const ContactForm = () => {
   };
 
   return (
-    <form noValidate autoComplete='off' onSubmit={handleSubmit}>
-      <FormControl fullWidth className={`${classes.margin} ${classes.border} `}>
-        <InputLabel>Nom</InputLabel>
-        <Input value={nom} name='nom' onChange={handleInputChange} required />
-      </FormControl>
-      <div className='error'>{errors.nom}</div>
+    <div className="form__container">
+      <h3>Formulaire de contact</h3>
+      <form noValidate autoComplete='off' onSubmit={handleSubmit}>
+        <FormControl fullWidth className={`${classes.margin} ${classes.border} `}>
+          <InputLabel>Nom *</InputLabel>
+          <Input value={nom} name='nom' onChange={handleInputChange} required />
+        </FormControl>
+        <div className='error'>{errors.nom}</div>
 
-      {/* <TextField
-        name='name'
-        variant='outlined'
-        label='Full Name'
-        // error={false}
-        // helperText={errors.names}
-        {...(errors.name && { helperText: errors.name, error: true })}
-      /> */}
+        <FormControl fullWidth className={`${classes.margin} ${classes.border} `}>
+          <InputLabel>Prénom *</InputLabel>
+          <Input value={prenom} name='prenom' onChange={handleInputChange} required />
+        </FormControl>
+        <div className='error'>{errors.prenom}</div>
 
-      <FormControl fullWidth className={`${classes.margin} ${classes.border} `}>
-        <InputLabel>Adresse Mail</InputLabel>
-        <Input
-          type='email'
-          name='email'
+        {/* <TextField
+          name='name'
+          variant='outlined'
+          label='Full Name'
+          // error={false}
+          // helperText={errors.names}
+          {...(errors.name && { helperText: errors.name, error: true })}
+        /> */}
+        
+        <FormControl fullWidth className={`${classes.margin} ${classes.border} `}>
+          <InputLabel>Société / Etablissement (facultatif)</InputLabel>
+          <Input
+            value={nomSociete}
+            name='nomSociete'
+            onChange={handleInputChange}
+          />
+        </FormControl>
+
+        <FormControl fullWidth className={`${classes.margin} ${classes.border} `}>
+          <InputLabel>Votre mail *</InputLabel>
+          <Input
+            type='email'
+            name='email'
+            onChange={handleInputChange}
+            value={email}
+            required
+          />
+        </FormControl>
+        <div className='error'>{errors.email}</div>
+
+        <FormControl fullWidth className={`${classes.margin} ${classes.border} `}>
+          <InputLabel>Téléphone</InputLabel>
+          <Input
+            value={numTel}
+            name='numTel'
+            onChange={handleInputChange}
+            required
+          />
+        </FormControl>
+        <div className='error'>{errors.numTel}</div>
+
+        <FormControl fullWidth className={`${classes.margin} ${classes.border} `}>
+          <InputLabel>Prestation *</InputLabel>
+          <Input
+            type='prestation'
+            name='prestation'
+            onChange={handleInputChange}
+            value={prestation}
+            required
+          />
+        </FormControl>
+        <div className='error'>{errors.prestation}</div>
+
+        <TextField
+          fullWidth
+          className={`${classes.margin} ${classes.border} `}
+          id='outlined-multiline-static'
+          label='Message'
+          multiline
+          rows={5}
+          name='message'
+          value={message}
           onChange={handleInputChange}
-          value={email}
-          required
+          variant='outlined'
         />
-      </FormControl>
-      <div className='error'>{errors.email}</div>
+        <div className='error'>{errors.message}</div>
 
-      <FormControl fullWidth className={`${classes.margin} ${classes.border} `}>
-        <InputLabel>Nom de la société</InputLabel>
-        <Input
-          value={nomSociete}
-          name='nomSociete'
-          onChange={handleInputChange}
-          required
-        />
-      </FormControl>
-      <div className='error'>{errors.nomSociete}</div>
+        <Button
+          type='submit'
+          variant='contained'
+          color='primary'
+          className='submit'
+          endIcon={<SendIcon />}>
+          Envoyer
+        </Button>
 
-      <FormControl fullWidth className={`${classes.margin} ${classes.border} `}>
-        <InputLabel>Numéro de Téléphone</InputLabel>
-        <Input
-          value={numTel}
-          name='numTel'
-          onChange={handleInputChange}
-          required
-        />
-      </FormControl>
-      <div className='error'>{errors.numTel}</div>
-
-      <TextField
-        fullWidth
-        className={`${classes.margin} ${classes.border} `}
-        id='outlined-multiline-static'
-        label='Message'
-        multiline
-        rows={5}
-        name='message'
-        value={message}
-        onChange={handleInputChange}
-        variant='outlined'
-      />
-      <div className='error'>{errors.message}</div>
-
-      <Button
-        type='submit'
-        variant='contained'
-        color='primary'
-        className='submit'
-        endIcon={<SendIcon />}>
-        Envoyer
-      </Button>
-
-      <ModalBootsrap
-        handleClose={handleClose}
-        show={show}
-        title={
-          <>
-            Envoyé
-            <i
-              className='fas fa-thumbs-up'
-              style={{ color: "#4caf50", marginLeft: "1rem" }}></i>
-          </>
-        }>
-        Message a bien été envoyé , Vous serez très rapidement être contacté
-      </ModalBootsrap>
-    </form>
+        <ModalBootsrap
+          handleClose={handleClose}
+          show={show}
+          title={
+            <>
+              Envoyé
+              <i
+                className='fas fa-thumbs-up'
+                style={{ color: "#4caf50", marginLeft: "1rem" }}></i>
+            </>
+          }>
+          Votre message a bien été envoyé , Vous serez très rapidement contacté
+        </ModalBootsrap>
+      </form>
+    </div>
   );
 };
 

@@ -1,72 +1,40 @@
 .contact-details {
+  max-width: 700px;
+}
+
+.contact__information-details h3{
+  font-weight: bold;
+  font-size: 24px;
+  text-align: center;
+}
+
+.contact__information-details p {    
+  font-size: 18px;
+  line-height: 30px;
+}
+
+.contact__information-details button {
+  background: #040405;
+  border: 1px solid #F7D452;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 27px;
+  padding: 1.3rem;
+  margin-left: 1rem;
+}
+
+.contact__mediums{
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: space-around;
-  height: 100%;
+  margin-top: 1rem;
 }
 
-.contact-details .MuiPaper-root:last-of-type {
-  display: flex;
-  justify-content: center;
-}
-
-.contact__icones {
-  color: rgb(82, 76, 76);
-}
-
-@media (max-width: 1080px) {
-  .contact-details .MuiPaper-root {
-    width: 80%;
-  }
-}
-
-@media (max-width: 900px) {
-  .contact-details {
-    align-items: flex-start;
-    padding-left: 10px;
-  }
-
-  .contact-details .MuiPaper-root {
-    width: 85%;
-  }
-}
-@media (max-width: 860px) {
-  .contact-details {
-    padding-left: 0;
-  }
-  .contact-details .MuiPaper-root {
-    width: 250px !important;
-  }
-
-  .contact-details {
-    flex-wrap: wrap !important;
-    flex-direction: row !important;
-    align-items: center !important;
-    justify-content: center !important;
-  }
-
-  .contact-details .MuiCard-root {
-    margin: 1rem !important;
-  }
-}
-
-@media (max-width: 600px) {
-  .contact-details {
-    display: block !important;
-    text-align: center;
-  }
-
-  .contact-details .MuiCard-root {
-    width: 100% !important;
-    margin: 1rem 0 !important;
-  }
-
-  .contact-details .MuiCard-root:last-of-type {
-    /* display: none; */
-  }
-
-  .contact-details .MuiCard-root .MuiTypography-root {
-    font-size: 12px;
-  }
+.contact__mediums p {
+  align-self: center;
+  margin-bottom: 0 !important;
 }

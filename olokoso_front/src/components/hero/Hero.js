@@ -27,7 +27,7 @@ const datas = [
     texte:
     "Ce plat typique d'Afrique de l'Ouest connu pour sa fameuse sauce à base de pâte d'arachide va vous rendre totalement love !!❤️❤️❤️ ",
     image: mafe_lover,
-    alt: "photo de plat",
+    alt: "photo du plat mafe",
     lien: { route: "/commander", nom: "Commander" },
   },
   {
@@ -37,7 +37,7 @@ const datas = [
       texte:
       "Des oignons frits, du riz, du poulet braisé mariné dans le citron... \n Le yassa vous attend pour nourrir de joie vos papilles 🚀🚀🚀 ",
     image: yassa_lover,
-    alt: "photo de plat",
+    alt: "photo du plat yassa",
     lien: { route: "/commander", nom: "Commander" },
   },
   {

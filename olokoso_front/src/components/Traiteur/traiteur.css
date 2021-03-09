@@ -1,0 +1,71 @@
+.traiteur{  
+    padding: 3rem;
+    background-color: black;
+    height: 92vh;
+}
+
+.traiteur_header{
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    margin-bottom: 4rem;    
+}
+
+.traiteur__introduction{
+    max-width: 1000px;
+}
+
+.traiteur_title {
+    font-family: 'Joti One', cursive;
+    font-size: 48px;  
+    text-align: center;
+    color: #FFE000;
+    margin-bottom: 2rem;
+}
+
+.logo__traiteur-page {      
+    width: 188px;
+    height: 167px;
+}
+
+.traiteur_text{
+    /* color: #90d9f1 !important; */    
+    font-size: 24px;
+    font-weight: 80 !important;
+    color:white;
+    text-align: center;
+}
+
+.traiteur__informations{
+    display: flex;
+    flex-direction: row;
+    margin: 8rem 4rem 4rem 4rem;
+}
+
+.hero__container__traiteur {
+    width: 900px;
+}
+
+.hero__image__traiteur {
+    margin-bottom: 4rem;
+    padding: 1rem;
+    height: 300px;
+}
+
+.carousel__item__traiteur {
+    display: flex;
+    justify-content: center;
+}
+
+.prestation__traiteur {
+    margin-left: 10rem;
+    width: 70%;
+}
+
+.prestation__traiteur h2{
+    text-align: left !important;
+}
+
+.prestation__traiteur p{
+    text-align: left !important;
+}
