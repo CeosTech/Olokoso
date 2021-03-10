@@ -16,7 +16,6 @@ const Carte = ({ setActive, active, activeCarte, setActiveCarte, categories }) =
 
   const [carte, setCarte] = useState(createCategoriesList); 
 
-  console.log('la carte ::' + JSON.stringify(carte))
 
   return (
     <div className={"carte " + (activeCarte ? "active" : null)}>

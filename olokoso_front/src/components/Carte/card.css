@@ -69,6 +69,29 @@
   justify-content: space-between !important;
 }
 
+.myModal__footer p {
+  font-weight: bold;
+}
+
+.myModal__header p {
+  font-weight: bold;
+}
+
+.myModal__footer div:first-child {
+  justify-self: center;
+  align-self: center;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  font-weight: bold;
+  -moz-box-shadow-bottom: 2px 2PX 2px grey;
+  -webkit-box-shadow-bottom: 2px 2px 2px grey;
+  box-shadow: 2px 2px 2px grey;
+  border-radius: 18px;
+  padding: 0.4rem;
+  margin: 0 10px;
+} 
+
 .MuiButtonBase-root {
   padding: 0px !important;
 }
