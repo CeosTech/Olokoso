@@ -431,7 +431,7 @@ const Paiement = () => {
         ) : (
           <div className='paiement__details'>
             <div className='paiement__details__recapitualitfs'>
-              <h2>Récapitualatif de commande</h2>
+              <h2>Récapitulatif de commande</h2>
               {baskets.map((product) => (
                 <div
                   className='paiement__details__product__details'

@@ -11,6 +11,7 @@ import Equipe from "./pages/Equipe";
 import Valeurs from "./pages/Valeurs";
 import Restaurant from "./pages/Restaurant";
 import Galerie from "./pages/Galerie";
+import Brunch from "./pages/Brunch";
 import Alerts from "./components/alert/Alerts";
 
 // Bootstrap
@@ -42,11 +43,12 @@ function App() {
             <Equipe />   
             <Valeurs />
             <Restaurant />
-            <Galerie />
+            <Contact />
           </Route>
           <Route exact path='/commander' component={Commander} />
           <Route exact path='/panier' component={Panier} />
-          <Route exact path='/contact' component={Contact} />
+          <Route exact path='/brunch' component={Brunch} />
+          <Route exact path='/galerie' component={Galerie} />
           <Route exact path='/paiement'>
             <Elements stripe={stripePromise}>
               <Paiement />

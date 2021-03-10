@@ -5,19 +5,29 @@ export const NavBarContext = createContext();
 const initialState = [
   { path: "/", id: "home", nom: "Accueil", estDansHome: true, active: true },
 
-  { path: "/commander", id: "commander", nom: "La carte", estDansHome: false, active: false },
-  
-  { path: "/", id: "equipe", nom: "L'équipe", estDansHome: true, active: false },
+  { path: "/", id: "brunch", nom: "Restaurant", estDansHome: true, active: false },
 
-  { path: "/", id: "restaurant", nom: "Notre restaurant", estDansHome: true, active: false },
+  { path: "/commander", id: "commander", nom: "Carte", estDansHome: false, active: false },
 
   {
-    path: "/contact",
-    id: "contact",
-    nom: "Traiteur",
+    path: "/brunch",
+    id: "brunch",
+    nom: "Brunch",
     estDansHome: false,
     active: false,
   },
+  
+  { path: "/", id: "contact", nom: "Contact", estDansHome: true, active: false },
+
+  
+  { 
+    path: "/galerie", 
+    id: "galerie", 
+    nom: "Photos", 
+    estDansHome: false,
+     active: false 
+  },
+
   {
     path: "/panier",
     id: "panier",
