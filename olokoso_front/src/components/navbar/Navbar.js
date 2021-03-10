@@ -56,6 +56,8 @@ const NavBar = () => {
     IsActiveButton(id)(e);
   };
 
+  console.log('le panier :: ' + JSON.stringify(baskets))
+
   const regex = /^\/admin/g;
   if (!location.pathname.match(regex)) {
     return (
@@ -128,20 +130,18 @@ const NavBar = () => {
                                     display: "flex",
                                     alignItems: "center",
                                     padding: "10px 0",
-                                  }}>
-                                  <img
-                                    src={item.img}
-                                    alt=''
-                                    style={{
-                                      maxWidth: "50px",
-                                      objectFit: "contain",
-                                    }}
-                                  />
+                                  }}>                                  
                                   <p
                                     style={{
                                       margin: "0 5px 0",
                                     }}>
-                                    {item.title}
+                                    {item.nom}
+                                  </p>
+                                  <p
+                                    style={{
+                                      margin: "0 5px 0",
+                                    }}>
+                                    {(item.quantite * item.prix).toFixed(2)}€
                                   </p>
                                 </div>
                               ))}
