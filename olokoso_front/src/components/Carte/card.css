@@ -7,6 +7,7 @@
   justify-content: space-between;
   /* cursor: pointer; */
   height: 250px; 
+  cursor: pointer;
 }
 
 .item_unavailable {

@@ -72,9 +72,6 @@
   color: #F7D452;
 }
 
-.carte__item:hover::before {
-  display: block;
-}
 
 @media (max-width: 1080px) {
   .carte {
