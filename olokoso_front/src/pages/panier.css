@@ -1,6 +1,6 @@
 .panier {
   max-width: 600px !important;
-  margin: auto !important;
+  margin: 2rem auto !important;
   padding: 1rem !important;
 }
 
@@ -20,6 +20,12 @@
   margin: 2rem 0;
   font-weight: 450;
   font-size: 2rem;
+}
+
+.panier__container{  
+  border: 1px solid rgb(77, 76, 76);
+  padding: 4rem 7rem;
+  box-shadow: 0 0 1in -0.25in rgba(0, 0, 0, 0.5);
 }
 
 .panier__nombre-articles {
