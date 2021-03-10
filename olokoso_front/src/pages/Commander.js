@@ -33,6 +33,26 @@ const Commander = () => {
     fetchData();
   }, [active]);
 
+  const selectDishesPerCategory = () => {
+    const selectedDishes = datas
+    // We filter the data :
+      .filter((data) => { 
+        // By only selecting the data that belong to a category (categories is an array in which are the different categories to which a dish belongs) that matches the one selected by the user (var active)
+        for (var i=0; i<data.categories.length; i++){
+          if (data.categories[i] === active) return true;
+          return false;
+        }
+      })
+      //Once filtered, we can go through the selection to display them
+      .map((data) => {
+        return <Card 
+            key={data.id} 
+            {...data} />;
+      });
+
+    return selectedDishes;
+  }
+
   return (
     <div className='commander'>
       <div className='commander__container'>
@@ -51,11 +71,7 @@ const Commander = () => {
         {isDataLoading && (
           <>
             <div className='commander__container__cards'>           
-              {datas.filter(data => data.categories[0] === active).map((data) => {
-                return <Card 
-                    key={data.id} 
-                    {...data} />;
-              })}
+              {selectDishesPerCategory()}
             </div>
 
             <div className={"commander__carte " + (activeCarte ? "white" : null)}>
