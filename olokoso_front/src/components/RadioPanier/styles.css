@@ -1,0 +1,9 @@
+.panier__fieldset {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.radio__panier-choice {
+    margin-bottom: 1rem !important;
+}

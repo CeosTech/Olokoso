@@ -3,9 +3,11 @@ import { useSelector } from "react-redux";
 import { selectBaskets } from "../app/Redux-slices/basketsSlice";
 import Empty from "../images/empty.svg";
 import Product from "../components/product/Product";
+import RadioButtonsGroup from "../components/RadioPanier";
 import { calculTotal, getNombresArticles } from "../utilities";
 import { useHistory } from "react-router-dom";
-import { Button } from "@material-ui/core";
+
+
 
 const Panier = () => {
   const history = useHistory();
@@ -48,22 +50,7 @@ const Panier = () => {
             <p>{calculTotal(baskets)} €</p>
           </div>
 
-          <div className='panier__choice-delivery'>
-            <input type="radio" id="delivery__1" name="delivery-1" value="Emporter"/>
-            <label for="delivery__1">A emporter</label>
-
-            <input type="radio" id="delivery__2" name="delivery-2" value="Livraison"/>
-            <label for="delivery__2">Livraison</label>
-          </div>
-
-          <Button
-            onClick={() => history.push("/paiement")}
-            type='submit'
-            variant='contained'
-            color='primary'
-            className='panier__container--btn-valider'>
-              Valider Mon Panier
-          </Button>
+          <RadioButtonsGroup />
           
         </div>
       )}
