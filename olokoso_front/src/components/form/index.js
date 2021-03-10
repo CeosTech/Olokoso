@@ -7,6 +7,8 @@ import {
   InputLabel,
   makeStyles,
   TextField,
+  Select,
+  MenuItem,
 } from "@material-ui/core";
 import SendIcon from "@material-ui/icons/Send";
 
@@ -78,10 +80,10 @@ const ContactForm = () => {
       validator.nom = state.nom ? null : "Le champ nom est obligatore";
 
     if ("prenom" in fieldValues)
-      validator.nom = state.nom ? null : "Le champ prenom est obligatore";
+      validator.prenom = state.prenom ? null : "Le champ prenom est obligatore";
       
     if ("prestation" in fieldValues)
-    validator.nom = state.nom ? null : "Choisissez une prestation";
+    validator.prestation = state.prestation ? null : "Choisissez une prestation";
   
 
     if ("message" in fieldValues)
@@ -199,7 +201,7 @@ const ContactForm = () => {
         <div className='error'>{errors.email}</div>
 
         <FormControl fullWidth className={`${classes.margin} ${classes.border} `}>
-          <InputLabel>Téléphone</InputLabel>
+          <InputLabel>Téléphone *</InputLabel>
           <Input
             value={numTel}
             name='numTel'
@@ -209,15 +211,19 @@ const ContactForm = () => {
         </FormControl>
         <div className='error'>{errors.numTel}</div>
 
-        <FormControl fullWidth className={`${classes.margin} ${classes.border} `}>
+        <FormControl fullWidth className={`${classes.margin} ${classes.border} `}>          
           <InputLabel>Prestation *</InputLabel>
-          <Input
+          <Select
             type='prestation'
             name='prestation'
             onChange={handleInputChange}
             value={prestation}
             required
-          />
+          >
+            <MenuItem value='Brunch'>Brunch</MenuItem>
+            <MenuItem value='Traiteur'>Traiteur</MenuItem>
+            <MenuItem value='Autre'>Autre (précisez votre demande dans le message ci-dessous)</MenuItem>
+          </Select>
         </FormControl>
         <div className='error'>{errors.prestation}</div>
 
@@ -255,7 +261,7 @@ const ContactForm = () => {
                 style={{ color: "#4caf50", marginLeft: "1rem" }}></i>
             </>
           }>
-          Votre message a bien été envoyé , Vous serez très rapidement contacté
+          Votre message a bien été envoyé , Vous serez très rapidement contacté.
         </ModalBootsrap>
       </form>
     </div>
