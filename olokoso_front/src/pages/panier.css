@@ -8,6 +8,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
+  padding-top: 4rem;
 }
 .panier__vide img {
   max-width: 80%;
@@ -26,6 +28,7 @@
   border: 1px solid rgb(77, 76, 76);
   padding: 4rem 7rem;
   box-shadow: 0 0 1in -0.25in rgba(0, 0, 0, 0.5);
+  position: relative;
 }
 
 .panier__nombre-articles {
@@ -112,6 +115,51 @@
 
 .choice-delivery__form{
   margin: 1rem;
+}
+
+.go-back {
+  font-size: 16px;
+  font-weight: 600;
+  /**
+   * If you set it to a value higher than the 'font-size', 
+   * you will have to take account of the difference 
+   * between the 'line-height' and the 'font-size' 
+   * to vertically centre the arrow and align it with the text.
+   **/
+  line-height: 1;
+
+  /* Makes some place for the arrow */
+  padding-left: 15px;
+
+  /* The arrow will be absolutely positioned */
+  position: relative;
+  border: none;
+  background-color: white;
+  position: absolute;
+  top: 2rem;
+  left: 2rem;
+}
+
+.go-back::before {  
+  color:  #F7D452;
+  border-style: solid;
+  border-width: 0 0 2px 2px;
+  content: "";
+  display: block;
+  height: 6px;
+  left: 0px;
+  position: absolute;
+  width: 6px;
+
+  /* These two lines vertically centre the point of the arrow */
+  margin-top: -3px;
+  top: 50%;
+
+  /* The arrow sprints to the left when the link is hovered */
+  transition: left 0.1s;
+
+  transform: rotate( 45deg );
+  -webkit-transform: rotate( 45deg );
 }
 
 @media (max-width: 600px) {

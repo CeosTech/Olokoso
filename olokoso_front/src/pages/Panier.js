@@ -14,12 +14,26 @@ const Panier = () => {
   return (
     <div className='panier'>
       {!baskets.length ? (
-        <div className='panier__vide'>
+        <div className='panier__vide'> 
+
+          <button 
+            onClick={history.goBack}
+            className="go-back">
+              Retour
+          </button>
+
           <h1>Votre panier est vide</h1>
           <img src={Empty} alt='empty basket' />
         </div>
       ) : (
         <div className='panier__container'>
+        
+          <button 
+            onClick={history.goBack}
+            className="go-back">
+              Retour
+          </button>
+
           <h1>Détail du panier</h1>
           <p className="panier__nombre-articles">
             {getNombresArticles(baskets)} article
@@ -30,7 +44,7 @@ const Panier = () => {
           })}
 
           <div className='panier__container--prix'>
-            <h1>TOTAL</h1>
+            <h1>Prix Total (TTC)</h1>
             <p>{calculTotal(baskets)} €</p>
           </div>
 
@@ -50,6 +64,7 @@ const Panier = () => {
             className='panier__container--btn-valider'>
               Valider Mon Panier
           </Button>
+          
         </div>
       )}
     </div>
