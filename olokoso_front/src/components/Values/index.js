@@ -17,7 +17,9 @@ const Values = () => {
       <img className='logo__values-page' src={olokoso_logon} alt='Logo olokoso' />
       <div className="values__introduction">
         <h2 className='values_title'>Nos valeurs</h2>        
-        <p className='values_text'>O'lokoso est une équipe de passionnés et   amoureux de la cuisine africaine, formés pour réjouir votre estomac. O'lokoso est une équipe de passionnés et   amoureux de la cuisine africaine, formés pour réjouir votre estomac.
+        <p className='values_text'>O’lokoso souhaite véhiculer à travers sa cuisine des valeurs fortes :
+        <span> Authenticité</span>, <span>Qualité</span> et <span>Passion</span>.
+        
         </p>
       </div>
     </div>

@@ -17,7 +17,7 @@ max-width: 1000px;
 
 .values_title {
 font-family: 'Joti One', cursive;
-font-size: 48px;  
+font-size: 4rem;  
 text-align: center;
 color: #FFE000;
 margin-bottom: 2rem;
@@ -54,16 +54,20 @@ position: absolute;
 }
 
 .values_text{
-    /* color: #90d9f1 !important; */    
-    font-size: 24px;
+    /* color: #90d9f1 !important; */   
+    font-size: 1.5rem;
     font-weight: 80 !important;
     color:white;
     text-align: center;
 }
 
+.values_text span{
+    font-weight: bold;
+}
+
 .values__description{
     /* color: #90d9f1 !important; */
-    font-size: 24px;
+    font-size: 1.1rem !important;
     font-weight: 80 !important;
     color:white;
 }
@@ -93,7 +97,7 @@ position: absolute;
 
 .values__container h2 {
     font-family: 'Joti One', cursive;    
-    font-size: 48px;  
+    font-size: 2.5rem;  
     color: #FFE000;
     margin-bottom: 1.5rem;
 }
@@ -104,7 +108,20 @@ position: absolute;
 }
   
 @media screen and (max-width: 750px) {
-.logo__values-page {
-    display: none;
-}
+    .logo__values-page {
+        display: none;
+    }
+
+    .values_title {
+        font-size: 3rem;
+    }
+
+    .values__container h2 {
+        font-size: 2rem;  
+    }
+
+    .values_text {
+        font-size: 1.5rem !important;
+    }
+
 }

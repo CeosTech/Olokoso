@@ -36,8 +36,8 @@ const Traiteur = () => {
         <div className='traiteur_header'>
             <img className='logo__traiteur-page' src={olokoso_logon} alt='Logo olokoso' />
             <div className="traiteur__introduction">
-                <h2 className='traiteur_title'>Prestation traiteur</h2>        
-                <p className='traiteur_text'>O'lokoso est une équipe de passionnés et   amoureux de la cuisine africaine, formés pour réjouir votre estomac. O'lokoso est une équipe de passionnés et   amoureux de la cuisine africaine, formés pour réjouir votre estomac.
+                <h2 className='traiteur_title'>Nos prestations traiteur</h2>        
+                <p className='traiteur_text'>O’lokoso vous offre également une <span>gamme de prestations traiteurs de qualité</span> pouvant être personnalisées pour vos évènements privés ou bien professionnels.
                 </p>
             </div>
         </div>
@@ -63,7 +63,7 @@ const Traiteur = () => {
             </div>
 
             <div className="prestation__traiteur">
-                <h2 className='traiteur_title'>Prestation traiteur</h2>        
+                <h2 className='traiteur_title'>Notre expérience à votre service !</h2>        
                 <p className='traiteur_text'>O'lokoso est une équipe de passionnés et   amoureux de la cuisine africaine, formés pour réjouir votre estomac. O'lokoso est une équipe de passionnés et   amoureux de la cuisine africaine, formés pour réjouir votre estomac.
                 </p>
             </div>

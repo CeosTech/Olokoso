@@ -63,6 +63,14 @@ const hero = () => {
                 <div className='carousel__item'>
                   <div className='hero__hero'>
                     <div className='hero__hero-hadings'>
+
+                      <div className='hero__hero-image2'>
+                        <img
+                          className='hero__image'
+                          src={data.image}
+                          alt={data.alt}
+                        />
+                      </div>
                      
                       <p className='hero__entete'>{data.en_tete}</p>
                       <p className='hero__subtext'>{data.sous_texte}</p>

@@ -1,7 +1,6 @@
 .traiteur{  
     padding: 3rem;
     background-color: black;
-    height: 92vh;
 }
 
 .traiteur_header{
@@ -17,7 +16,7 @@
 
 .traiteur_title {
     font-family: 'Joti One', cursive;
-    font-size: 48px;  
+    font-size: 4rem;  
     text-align: center;
     color: #FFE000;
     margin-bottom: 2rem;
@@ -30,10 +29,15 @@
 
 .traiteur_text{
     /* color: #90d9f1 !important; */    
-    font-size: 24px;
+    font-size: 1.5rem;
     font-weight: 80 !important;
     color:white;
     text-align: center;
+}
+
+.traiteur_text span{
+    font-weight: bold;
+    color: #FFE000;
 }
 
 .traiteur__informations{
@@ -64,8 +68,38 @@
 
 .prestation__traiteur h2{
     text-align: left !important;
+    color: white !important;
+    font-size: 3rem !important;
 }
 
 .prestation__traiteur p{
     text-align: left !important;
+}
+
+@media screen and (max-width: 1100px) {
+    .traiteur__informations {       
+        flex-direction: column;
+        margin: 4rem 0;
+    }
+    .hero__container__traiteur {
+        width: 300px;
+        align-self: center;
+    }
+
+    .hero__image__traiteur {       
+        height: 200px;
+    }
+}
+  
+
+@media screen and (max-width: 750px) {
+    
+    .traiteur_title {
+      font-size: 3rem;
+    }
+  
+    .traiteur_text {
+      font-size: 1.5rem !important;
+    }
+  
 }

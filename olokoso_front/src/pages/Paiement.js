@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import {
   Button,
@@ -7,6 +7,8 @@ import {
   Input,
   InputLabel,
   makeStyles,
+  Select,
+  MenuItem,
   // Modal,
 } from "@material-ui/core";
 import NavigateNextIcon from "@material-ui/icons/NavigateNext";
@@ -20,8 +22,10 @@ import { selectBaskets, emptyBasket } from "../app/Redux-slices/basketsSlice";
 import spinner from "../images/spinner.gif";
 import { calculPrixProduitAvecQuantite, calculTotal } from "../utilities";
 import { useHistory } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import axios from "axios";
 import Modal from "../components/MyModal/Modal";
+
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
@@ -65,19 +69,26 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-// variable arbitraire pour effectuer des tests
-const initial = {
-  nom: "Mister",
-  prenom: "Test",
-  email: "mrtest@test.com",
-  num_tel: "0612345678",
-  adresse: "43 rue des Tests",
-  ville: "TestCity",
-  code_postale: "12345",
-};
+  
+  // variable arbitraire pour effectuer des tests
+  const initial = {
+    nom: "Mister",
+    prenom: "Test",
+    email: "mrtest@test.com",
+    num_tel: "0612345678",
+    adresse: "43 rue des Tests",
+    ville: "TestCity",
+    code_postale: "12345",
+  };
 
-const Paiement = () => {
-  const [paiment_process, setPaiement_process] = useState("livraison");
+const Paiement = (props) => {
+  
+  // With location we can retrieve the kins of delivery chosen (was passed in props of history)
+  const location = useLocation();
+
+  console.log(location.delivery.value); 
+
+  const [paiment_process, setPaiement_process] = useState('livraison');
   const [showModal, setShowModal] = useState(false);
 
   const [error, setError] = useState(null);
@@ -408,7 +419,7 @@ const Paiement = () => {
               <FormControl
                 fullWidth
                 className={`${classes.margin} ${classes.border} ${classes.marginLeftRight}`}>
-                <InputLabel>Code Postale</InputLabel>
+                <InputLabel>Code Postal</InputLabel>
                 <Input
                   value={code_postale}
                   name='code_postale'
@@ -418,6 +429,8 @@ const Paiement = () => {
                 <div className='error'>{errors.code_postale}</div>
               </FormControl>
             </div>
+
+            <p>{location.delivery.value}</p>
 
             <Button
               type='submit'

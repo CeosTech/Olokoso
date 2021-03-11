@@ -61,25 +61,25 @@
   /* color: #3bb9e0; */
   text-transform: uppercase;
   font-weight: bolder !important;
-  margin-bottom: 0;
   letter-spacing: 2px;
   line-height: 2rem;
 }
+
 .hero__hero-hadings > p {
   font-weight: bold;
-  margin-bottom: 1.5rem;
   letter-spacing: 1px;
 }
+
 .hero__entete {
-  font-size: 3.8rem ;
-  margin-bottom: 2.5rem; 
+  font-size: 4rem !important;
+  margin-bottom: 4rem !important; 
   font-family: 'Joti One', cursive;
   color:#FFE000;
 }
 
 .hero__subtext {
   /* color: #90d9f1 !important; */
-  font-size: 1.8rem !important;
+  font-size: 2.5rem !important;
   margin-bottom: 2rem !important;
   font-weight: 500 !important;
   color:white;
@@ -89,7 +89,7 @@
 
 .hero__text{
   /* color: #90d9f1 !important; */
-  font-size: 1rem !important;
+  font-size: 1.5rem !important;
   margin-bottom: 2rem !important;
   font-weight: 500 !important;
   color:white;
@@ -102,14 +102,14 @@
 
 .telecharger_btn {
   text-decoration: none !important;
-  color: black !important;
+  color:  black !important;
   padding: 0.5rem 3rem;
   border: 1px solid white;
-  background-color:white;
+  background-color:#FFE000;
   border-radius: 25px;
   font-size: 1rem;
   display: inline-block;
-  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);  
 }
 
 .thumbs-wrapper {
@@ -173,32 +173,49 @@
   height: 32px !important;
 }
 
-@media (max-width: 1100px) {
-  .hero__hero-hadings > p {
-    font-weight: bold;
-    font-size: 2.5rem;
-    margin-bottom: 2.5rem;
-  }
+.hero__hero-image2 {
+  display: none;
 }
 
-@media (max-width: 768px) {
-  .hero__hero-hadings > h1 {
-    font-size: 1.5rem;
+
+@media (max-width: 750px) {
+  .hero__hero {
+    display: flex;
+    flex-direction: column; 
   }
+
+  .hero__hero-image {
+    display: none;
+  }
+
+  .hero__hero-image2 {
+    display: block;
+    pointer-events: none;
+  }
+
+  .hero__image {
+    max-height: 300px;
+    max-width: 60%;
+    margin-bottom: 2.5rem;
+  }
+
   .hero__hero-hadings > p {
     font-weight: bold;
-    font-size: 2.5rem;
-    margin-bottom: 2.5rem;
   }
 
   .hero__subtext {
-    font-size: 1.8rem !important;
+    font-size: 2rem !important;
+    margin-bottom: 2.5rem !important;
+  }
+
+  .hero__text {
+    font-size: 1.5rem !important;
     margin-bottom: 2.5rem !important;
   }
 
   .hero__entete {
-    font-size: 2.5rem !important;
-    margin-bottom: 2.5rem !important;
+    font-size: 3rem !important;
+    margin-bottom: 4rem !important;
   }
  
   .hero__hero {
@@ -224,17 +241,19 @@
     transform: scale(2);
   }
 }
+
+
 @media (max-width: 583px) {
   .hero__hero-hadings > h1 {
     font-size: 1.5rem;
   }
+
   .hero__hero-hadings > p {
     font-weight: bold;
-    font-size: 1.7rem;
   }
 
-  .hero__subtext {
-    font-size: 1.3rem !important;
+  .hero__text {
+    font-size: 1.2rem !important;
   }
   .hero__subtext {
     font-size: 1.8rem !important;
@@ -250,65 +269,5 @@
   .carousel-control-prev-icon {
     width: 25px !important;
     height: 25px !important;
-  }
-}
-
-@media (max-width: 550px) {
-  .hero__hero-image {
-    position: absolute;
-    /* display: none; */
-    top: 47%;
-    right: 18%;
-    transform: translate(0%, 80%);
-    z-index: -1;
-    opacity: 0.3;
-  }
-
-  .hero__hero-image .hero__image {
-    width: 100%;
-    object-fit: contain;
-    transform: scale(6);
-  }
-  .hero__hero-hadings > h1 {
-    font-size: 1.3rem;
-  }
-  .hero__hero-hadings > p {
-    font-weight: bold;
-    font-size: 1.8rem;
-  }
-
-  .hero__subtext {
-    font-size: 1.4rem !important;
-  }
-
-  .telecharger_btn {
-    display: block;
-    font-size: 1.2rem;
-    padding-left: 0;
-    padding-right: 0;
-    width: 60%;
-    text-align: center;
-    margin: auto;
-  }
-}
-@media (max-width: 400px) {
-  .telecharger_btn {
-    font-size: 1.1rem;
-    width: 90% !important;
-  }
-}
-@media (max-width: 370px) {
-  .hero__hero-hadings > h1 {
-    font-size: 1rem;
-  }
-  .hero__hero-hadings > p {
-    font-weight: bold;
-    font-size: 1.5rem;
-    margin-bottom: 1.5rem !important;
-  }
-
-  .hero__subtext {
-    font-size: 1.3rem !important;
-    margin-bottom: 2rem !important;
   }
 }

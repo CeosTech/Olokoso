@@ -9,8 +9,8 @@ const Restaurant = () => {
   return (
     <div className='restaurant' id='restaurant'>
       <div className='restaurant__header'>
-        <h2 className='restaurant__title'>Notre restaurant</h2>        
-        <p className='restaurant__text'>Venez découvrir nos spécialités culinaires d'Afrique !
+        <h2 className='restaurant__title'>Tous les chemins mènent à O'lokosso</h2>        
+        <p className='restaurant__text'>Venez découvrir nos <span>spécialités culinaires d'Afrique !</span>
         </p>
       </div>
 

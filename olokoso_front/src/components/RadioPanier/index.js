@@ -17,10 +17,14 @@ const history = useHistory();
     setValue(event.target.value);
   };
 
+  // Will redirect to the payment and add in the props the kind of delivery chosen
   const handleSubmit = () => {
     console.log(value);
     if (value !== '') {
-        history.push("/paiement")
+        history.push({
+          pathname: '/paiement',
+          delivery: {value},
+      });
         setError(false)
     }
     else {
@@ -32,8 +36,8 @@ const history = useHistory();
     <div className="panier__fieldset">
 
         <RadioGroup aria-label="panier__choice-delivery" name="panier__choice-delivery" value={value} onChange={handleChange}>
-            <FormControlLabel className="radio__panier-choice" value="take-away--choice" control={<Radio />} label="A emporter" />
-            <FormControlLabel value="delivery-choice" className="radio__panier-choice" control={<Radio />} label="Livraison" />
+            <FormControlLabel className="radio__panier-choice" value="emporter" control={<Radio />} label="A emporter" />
+            <FormControlLabel value="livraison" className="radio__panier-choice" control={<Radio />} label="Livraison" />
         </RadioGroup>
 
         
