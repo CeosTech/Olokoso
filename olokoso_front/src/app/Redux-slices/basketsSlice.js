@@ -34,8 +34,6 @@ export const basketsSlice = createSlice({
       const productIdx = state.findIndex(
         (product) => product.nom === action.payload.nom
       );
-      console.log('le state ::' + JSON.stringify(state))      
-      console.log('le id ::' + productIdx)
       state.splice(productIdx, 1);      
     },
 

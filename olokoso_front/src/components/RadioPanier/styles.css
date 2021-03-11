@@ -8,3 +8,11 @@
     margin-bottom: 1rem !important;
 }
 
+.panier__container--btn-valider {
+    margin-top: 2rem !important;
+}
+
+.error_cart{
+    text-align: center;
+}
+

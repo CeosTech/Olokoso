@@ -86,8 +86,6 @@ const Paiement = (props) => {
   // With location we can retrieve the kins of delivery chosen (was passed in props of history)
   const location = useLocation();
 
-  console.log(location.delivery.value); 
-
   const [paiment_process, setPaiement_process] = useState('livraison');
   const [showModal, setShowModal] = useState(false);
 
@@ -337,7 +335,12 @@ const Paiement = (props) => {
         </div>
 
         {paiment_process === "livraison" ? (
-          <form noValidate autoComplete='off' onSubmit={handleSubmit}>
+          <form 
+            noValidate 
+            autoComplete='off' 
+            onSubmit={handleSubmit} 
+            style={{ flexDirection:"column" }}
+          >
             <FormControl
               fullWidth
               className={`${classes.margin} ${classes.border} `}>
@@ -430,7 +433,11 @@ const Paiement = (props) => {
               </FormControl>
             </div>
 
-            <p>{location.delivery.value}</p>
+            
+            {/* The type of delivery chosen */}
+            <div className="delivery-infos__container">
+              <p className="paiement__delivery-informations">choix de livraison : {location.delivery.value}</p>
+            </div>
 
             <Button
               type='submit'

@@ -26,7 +26,7 @@
 }
 
 .felicitation__container h1 {
-  color: rgb(240, 106, 150);
+  color: #F7D452;
 }
 
 .felicitation__container h2 {
@@ -42,6 +42,5 @@
   margin-bottom: 10px;
 }
 .felicitation__container p {
-  color: rgb(60, 96, 214);
-  color: rgb(240, 106, 150);
+  color: #F7D452;
 }

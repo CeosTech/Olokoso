@@ -36,13 +36,13 @@ const history = useHistory();
     <div className="panier__fieldset">
 
         <RadioGroup aria-label="panier__choice-delivery" name="panier__choice-delivery" value={value} onChange={handleChange}>
-            <FormControlLabel className="radio__panier-choice" value="emporter" control={<Radio />} label="A emporter" />
+            <FormControlLabel className="radio__panier-choice" value="à emporter" control={<Radio />} label="A emporter" />
             <FormControlLabel value="livraison" className="radio__panier-choice" control={<Radio />} label="Livraison" />
         </RadioGroup>
 
         
         {error && (
-            <p className="delivery__error-message">Veuillez choisir un mode de livraison</p>
+            <p className="error error_cart">Veuillez choisir un mode de livraison</p>
         )}
 
         <Button
