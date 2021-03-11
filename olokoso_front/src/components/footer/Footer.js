@@ -65,7 +65,7 @@ const Footer = () => {
                       />
                   </a>
                   <a
-                      href='https://www.facebook.com/Markusapp-100288068734888'
+                      href='https://www.instagram.com/olokoso91/?hl=fr'
                       rel='noreferrer'
                       target='_blank'>
                       <img
