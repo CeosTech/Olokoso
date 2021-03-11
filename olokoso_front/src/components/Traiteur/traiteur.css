@@ -102,3 +102,10 @@
     }
   
 }
+
+
+@media screen and (max-width: 520px) {
+    .logo__traiteur-page {
+        display: none;
+    }  
+}
