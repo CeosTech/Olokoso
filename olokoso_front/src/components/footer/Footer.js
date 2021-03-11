@@ -6,32 +6,23 @@ import snapchat from "../../images/logo-snapchat.png";
 import facebook from "../../images/logo-facebook.png";
 import insta from "../../images/logo-insta.png";
 
-import useWindowMatchMedia from "../../hooks/useWindowMatchMedia";
-import FooterMobile from "./FooterMobile";
-import { useHistory } from "react-router-dom";
-import { smoothScroll } from "../../utilities";
-
-const contacts = {
-  tel: "0635364499",
-  addr: "7 place de l'Hôtel de Ville 93600 Aulnay sous Bois, France",
-  email: "contact@markus-app.com",
-};
-
 const Footer = () => {
-  const history = useHistory();
-  // const footer_container_ref = useRef(null);
-  // const { height, width } = useDimensions(footer_container_ref);
-  const { isInTheMediaQuery } = useWindowMatchMedia(600);
 
-  const pushToCGU = (id) => (e) => {
-    history.push("/cgu");
-    smoothScroll(id)(e);
-  };
 
   return (
     <div className='footer'>
-      {!isInTheMediaQuery ? (
         <div id='footer__container' className='footer__container'>
+
+          <div className="footer__part2 footer__mobile">
+            <img
+                className='footer__logo'
+                src={logo}
+                alt='Olokosso logo'
+            />
+            <p>Made by <span>Ceos Tech</span></p>
+            <p>Tout droits réservés ©</p>
+        </div>
+
           <div className="footer__part1">
               <h3 className="footer__title">O'lokosso</h3>
               <p className="footer__adress">114 avenue de verdun,<br/>
@@ -40,7 +31,7 @@ const Footer = () => {
               Numéro SIRET : </p>
           </div>
 
-          <div className="footer__part2">
+          <div className="footer__part2 footer__desktop">
               <img
                   className='footer__logo'
                   src={logo}
@@ -86,9 +77,6 @@ const Footer = () => {
               </div>
           </div>
       </div>
-      ) : (
-        <FooterMobile contacts={contacts} pushToCGU={pushToCGU} />
-      )}
     </div>
   );
 };
