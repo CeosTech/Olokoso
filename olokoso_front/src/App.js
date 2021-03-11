@@ -12,6 +12,7 @@ import Valeurs from "./pages/Valeurs";
 import Restaurant from "./pages/Restaurant";
 import Galerie from "./pages/Galerie";
 import Brunch from "./pages/Brunch";
+import Footer from "./components/footer/Footer";
 import Alerts from "./components/alert/Alerts";
 
 // Bootstrap
@@ -58,6 +59,7 @@ function App() {
           <Route path='/admin' component={Admin} />
           <Route exact component={NotFoundPage} />
         </Switch>
+        <Footer />
       </Router>
     </div>
   );

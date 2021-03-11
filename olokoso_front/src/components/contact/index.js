@@ -13,8 +13,8 @@ const Contact = () => {
       <Traiteur />
       <div className='contact' id='contact' ref={contact_div}>
         <div className='contact__header'> 
-            <h2 className='contact_title'>Nous contacter</h2>        
-            <p className='contact__text'>O'lokoso est une équipe de passionnés et   amoureux de la cuisine africaine, formés pour réjouir votre estomac. O'lokoso est une équipe de passionnés et   amoureux de la cuisine africaine, formés pour réjouir votre estomac.
+            <h2 className='contact_title'>Une question ? Une demande précise ?</h2>        
+            <p className='contact__text'>Pour toute demande d’information concernant le restaurant, nos prestations traiteurs ou notre service de brunch, vous pouvez nous contacter soit par <span>mail</span>, soit par <span>téléphone</span> ou bien remplir le <span>formulaire de contact</span> :)
             </p>
         </div>  
                   

@@ -64,7 +64,7 @@ const Traiteur = () => {
 
             <div className="prestation__traiteur">
                 <h2 className='traiteur_title'>Notre expérience à votre service !</h2>        
-                <p className='traiteur_text'>O'lokoso est une équipe de passionnés et   amoureux de la cuisine africaine, formés pour réjouir votre estomac. O'lokoso est une équipe de passionnés et   amoureux de la cuisine africaine, formés pour réjouir votre estomac.
+                <p className='traiteur_text'>O'lokoso est une équipe de passionnés et amoureux de la cuisine africaine, formés pour réjouir votre estomac. O'lokoso est une équipe de passionnés et amoureux de la cuisine africaine, formés pour réjouir votre estomac.
                 </p>
             </div>
 

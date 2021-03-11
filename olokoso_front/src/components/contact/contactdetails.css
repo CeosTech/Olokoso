@@ -4,12 +4,12 @@
 
 .contact__information-details h3{
   font-weight: bold;
-  font-size: 24px;
+  font-size: 2rem;
   text-align: center;
 }
 
 .contact__information-details p {    
-  font-size: 18px;
+  font-size: 1rem;
   line-height: 30px;
 }
 
@@ -20,21 +20,31 @@
   border-radius: 10px;
   color: white;
   font-weight: bold;
-  font-size: 20px;
+  font-size: 1.2rem;
   line-height: 27px;
-  padding: 1.3rem;
-  margin-left: 1rem;
+  padding: 1rem;
+  margin-top: 1rem;
+  width: 250px;
 }
 
 .contact__mediums{
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-around;
   margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
 }
 
 .contact__mediums p {
   align-self: center;
   margin-bottom: 0 !important;
+}
+
+.contact_logo {
+  margin-right: 1rem;
+  width: 30px;
+}
+
+@media screen and (max-width: 750px) {
+  .contact__information-details h3{
+    font-size: 1.75rem;
+  }
 }

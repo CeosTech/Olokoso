@@ -1,10 +1,7 @@
 .restaurant{  
-    margin: 3rem 0;
+    margin: 3rem;
 }
 
-.restaurant__header{
-    margin: auto 4rem;
-}
 
 .restaurant__title {
     font-family: 'Joti One', cursive;
@@ -25,8 +22,7 @@
 
 .restaurant__container {
     display: flex;
-    flex-direction: row;  
-    margin: 0 4rem;
+    flex-direction: row; 
 
 }
 

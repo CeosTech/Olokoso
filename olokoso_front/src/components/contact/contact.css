@@ -1,6 +1,5 @@
 .contact {
-  max-width: 1500px;
-  margin: 3rem auto;
+  margin: 3rem;
 }
 
 .contact__container {
@@ -28,18 +27,27 @@
 
 .contact_title{
   font-family: 'Joti One', cursive;
-  font-size: 48px;  
+  font-size: 4rem;  
   text-align: center;
-  color: #FFE000;
   margin-bottom: 2rem;
 }
 
 .contact__text {
-  font-size: 24px;
+  font-size: 1.5rem;
   font-weight: 80 !important;
   color:black;
   text-align: center;
   max-width: 800px;
+}
+
+.contact__text span {
+  font-weight: bold;
+}
+
+@media screen and (max-width: 750px) {
+  .contact_title {
+    font-size: 3rem;
+  }
 }
 
 
