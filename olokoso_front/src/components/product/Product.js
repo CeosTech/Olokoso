@@ -5,8 +5,10 @@ import { useDispatch } from "react-redux";
 import {
   incrementQauntite,
   decrementQauntite,
+  deleteProduct,
 } from "../../app/Redux-slices/basketsSlice";
 import { IconButton } from "@material-ui/core";
+import DeleteIcon from '@material-ui/icons/Delete';
 import { splitPrix } from "../../utilities";
 
 const Product = ({ image_url, nom, prix, id, quantite }) => {
@@ -14,9 +16,8 @@ const Product = ({ image_url, nom, prix, id, quantite }) => {
 
   return (
     <div className='product'>
-      <img src={image_url} alt={nom} />
       <p className='product--info-title'>{nom}</p>
-
+      
       <div className='product--quantite'>
         <IconButton
           onClick={() => {
@@ -34,7 +35,12 @@ const Product = ({ image_url, nom, prix, id, quantite }) => {
         </IconButton>
       </div>
         
-      <p className='product--info-prix'>{splitPrix(prix)}</p>
+      <p className='product--info-prix'>{splitPrix(prix)}</p>     
+        
+      <DeleteIcon 
+        className="delete__product"
+        onClick={() => dispatch(deleteProduct({ nom }))}
+      />
       
     </div>
   );

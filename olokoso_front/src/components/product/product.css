@@ -51,9 +51,16 @@
   box-shadow: 2px 2px 2px grey;
   border-radius: 18px;
   padding: 0.4rem 0;
+  margin: 0 1rem;
 }
 .product--quantite button {
   margin: 0 10px;
+}
+
+.delete__product {
+  justify-self: center;
+  align-self: center;
+  cursor: pointer !important;
 }
 
 @media (max-width: 600px) {

@@ -30,6 +30,15 @@ export const basketsSlice = createSlice({
       }
     },
 
+    deleteProduct: (state, action) => {
+      const productIdx = state.findIndex(
+        (product) => product.nom === action.payload.nom
+      );
+      console.log('le state ::' + JSON.stringify(state))      
+      console.log('le id ::' + productIdx)
+      state.splice(productIdx, 1);      
+    },
+
     addProduct: (state, action) => {
       const productIdx = state.findIndex(
         (product) => product.nom === action.payload.nom
@@ -58,6 +67,7 @@ export const {
   incrementQauntite,
   decrementQauntite,
   incrementByAmount,
+  deleteProduct,
   addProduct,
   emptyBasket,
 } = basketsSlice.actions;
