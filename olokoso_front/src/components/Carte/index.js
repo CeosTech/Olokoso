@@ -1,5 +1,4 @@
-import { IconButton } from "@material-ui/core";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import carteImg from "../../images/olokoso_logo.png";
 
 import "./carte.css";
@@ -14,9 +13,8 @@ const Carte = ({ setActive, active, activeCarte, setActiveCarte, categories }) =
     } 
   )); 
 
-  const [carte, setCarte] = useState(createCategoriesList); 
-
-
+  const [carte, setCarte] = useState(createCategoriesList);
+  
   return (
     <div className={"carte " + (activeCarte ? "active" : null)}>
       <div className='carte__image-container'>

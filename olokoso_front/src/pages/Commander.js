@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 
 import Carte from "../components/Carte";
+import Menu from "../components/Menu";
 import Card from "../components/Carte/card";
 
 import "./commander.css";
@@ -33,24 +34,43 @@ const Commander = () => {
     fetchData();
   }, [active]);
 
-  const selectDishesPerCategory = () => {
-    const selectedDishes = datas
-    // We filter the data :
-      .filter((data) => { 
-        // By only selecting the data that belong to a category (categories is an array in which are the different categories to which a dish belongs) that matches the one selected by the user (var active)
-        for (var i=0; i<data.categories.length; i++){
-          if (data.categories[i] === active) return true;
-          return false;
-        }
-      })
-      //Once filtered, we can go through the selection to display them
-      .map((data) => {
-        return <Card 
-            key={data.id} 
-            {...data} />;
-      });
+  //Function that will check through if id of the selected menu item matches the one of 'Menu'. If so then we will want to display all of the datas, not just a selection.
+  const isMenu = () => {
+    for (var i=0; i<menuCategories.length; i++){
+      if (menuCategories[i].id === active && menuCategories[i].nom === 'Menu'){
+        return datas;       
+      };
+    }
+  }
 
-    return selectedDishes;
+  const selectDishesPerCategory = () => {
+    var menuDishes = isMenu();
+
+    if (menuDishes !== undefined) {
+      return <Menu 
+              {...menuDishes} 
+              {...menuCategories}
+            />;
+    }
+
+    else {
+      const selectedDishes = datas
+      // We filter the data :
+        .filter((data) => { 
+          // By only selecting the data that belongs to a category (categories is an array in which are the different categories to which a dish belongs) that matches the one selected by the user (var active)
+          for (var i=0; i<data.categories.length; i++){
+            if (data.categories[i] === active) return true;
+            return false;
+          }
+        })
+        //Once filtered, we can go through the selection to display them
+        .map((data) => {
+          return <Card 
+              key={data.id} 
+              {...data} />;
+        });
+      return selectedDishes;
+    }  
   }
 
   return (
@@ -67,7 +87,6 @@ const Commander = () => {
         />
         )}
 
- {/* Filter will here be used to only display the dishes that belong to the category chosen by the user*/}
         {isDataLoading && (
           <>
             <div className='commander__container__cards'>           
