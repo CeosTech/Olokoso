@@ -30,7 +30,7 @@ const sidebar = {
   },
 };
 
-const NavMobile = ({ currentPage, IsActiveButton, activeButton, location }) => {
+const NavMobile = ({ navLinks, activeButton, setActiveButton}) => {
   const [isOpen, setOpen] = useState(false);
   const containerRef = useRef(null);
   const { height } = useDimensions(containerRef);
@@ -58,10 +58,9 @@ const NavMobile = ({ currentPage, IsActiveButton, activeButton, location }) => {
       <motion.div className='background' variants={sidebar} />
       <Navigation
         toggleOpen={toggleOpen}
-        currentPage={currentPage}
-        IsActiveButton={IsActiveButton}
+        navLinks={navLinks}
         activeButton={activeButton}
-        location = {location}
+        setActiveButton={setActiveButton}
       />
       <MenuToggle
         isOpen={isOpen}

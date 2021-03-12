@@ -1,7 +1,7 @@
 import * as React from "react";
 import { motion } from "framer-motion";
 
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const variants = {
   open: {
@@ -21,55 +21,29 @@ const variants = {
 };
 
 export const MenuItem = ({
-  nom,
-  path,
   toggleOpen,
-  currentPage,
-  estDansHome,
-  active,
+  key,
+  path,
+  nom,
   id,
-  IsActiveButton,
-  location,
+  activeButton,
+  setActiveButton,
 }) => {
 
   const createLink = () => {
-    if(estDansHome){
       return (
-        <div
-          key={nom}
-          onClick={IsActiveButton(id)}
-          className={active && location.pathname === path ? "active" : undefined}
+        <NavLink
+          to={path}
+          key={id}
+          exact
+          className={activeButton === id ? 'navLink--active' : 'navLink--dormant'}
+          onClick={() => {setActiveButton(id)}}    
         >
-          <Link
-            to={path}            
-            onClick={toggleOpen}
-            key={nom}
-            className={active && location.pathname === path ? "active" : undefined}
-          >
-              {nom}
-          </Link>
-          </div>
+          {nom}
+
+        </NavLink>
       )
-    }
-    else {
-      return (
-        <div
-          key={path}
-          onClick={IsActiveButton(id)}
-          className={active || location.pathname === path ? "active" : undefined}
-        >
-          <Link
-            to={path}            
-            onClick={toggleOpen}
-            key={nom}
-            className={active || location.pathname === path ? "active" : undefined}
-          >
-              {nom}
-          </Link>
-        </div>
-      )
-    }
-  }
+  };
 
   return (
     <motion.li
@@ -81,4 +55,5 @@ export const MenuItem = ({
       
     </motion.li>
   );
+
 };

@@ -1,235 +1,176 @@
-import React, { useRef, useEffect, useMemo, useState } from "react";
-import Logo from "../../images/olokoso_logo.png";
+import React, { useEffect, useRef, useState } from "react";
 import "./navbar.css";
 import olokoso_logo from "../../images/olokoso_logo.png";
-import { Link, useLocation, useHistory } from "react-router-dom";
+import {  useLocation } from "react-router-dom";
 import NavMobile from "./mobile/NavMobile";
+import { NavLink } from 'react-router-dom';
 
 import {
-  debounce,
   getNombresArticles,
-  isIntersecting,
   smoothScroll,
 } from "../../utilities";
-import { useNavBarStateValue } from "../../contexts/Navbar/NavBarState";
-import { SET_ACTIVE } from "../../contexts/Navbar/actiontypes";
 import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
 
 import { useSelector } from "react-redux";
 import { selectBaskets } from "../../app/Redux-slices/basketsSlice";
 import { IconButton } from "@material-ui/core";
 import { OverlayTrigger, Popover } from "react-bootstrap";
-import SwitchBtn from "../switch/SwitchBtn";
+
+//Two cases in the navbar :
+// *Links in the homepage ('/'), but that need to be scrolled to
+// *Links not in the homepage that need to redirected to
+
+// Solution :
+// * state activeButton that allows to define on which link we just have clicked, to display it as active (different color, thanks to a different className)
+
+// * function findNavbarItemFromLocation that allows to find the location (after a refresh for exemple it's useful to know on which page we are) and will set the activeButton to the page we are on
+
+//* A function smoothScroll that will scroll to the selected component on the homepage => used in the hook useEffect so that it's triggered after the component is mounted and the change of page is effective.
 
 const NavBar = () => {
   const nav = useRef(null);
   const location = useLocation();
-  const history = useHistory();
-  const currentPage = useMemo(() => location.pathname, [location.pathname]);
-  // const [activeButton, setActiveButton] = useState("home");
-  const { state, dispatch } = useNavBarStateValue();
-  const [showBgNavBar, setShowBgNavBar] = useState(false);
   const baskets = useSelector(selectBaskets);
 
-  const changeBackground = () => {
-    // console.log(window.scrollY);
-    if (window.scrollY >= 80) {
-      setShowBgNavBar(true);
-    } else {
-      setShowBgNavBar(false);
-    }
-  };
 
-  window.addEventListener("scroll", changeBackground);
+const navLinks = [
+  { path: "/", id: "home", nom: "Accueil"},
 
-  const IsActiveButton = (id) => (e) => {
-    // setActiveButton(id);
-    dispatch({
-      id,
-      type: SET_ACTIVE,
-    });
-    smoothScroll(id)(e);
-  };
+  { path: "/", id: "restaurant", nom: "Restaurant"},
 
-  const redirectTo = (id, path) => (e) => {
-    history.push(path);
-    IsActiveButton(id)(e);
-  };
+  { path: "/commander", id: "commander", nom: "Carte"},
 
-  console.log('le panier :: ' + JSON.stringify(baskets))
+  { path: "/brunch", id: "brunch", nom: "Brunch"},
+  
+  { path: "/", id: "contact", nom: "Contact" },
+  
+  { path: "/galerie", id: "galerie", nom: "Photos"},
+];
 
-  const regex = /^\/admin/g;
+
+const findNavbarItemFromLocation = () => {
+  const navLinkItem = navLinks.find(navLink => navLink.path === location.pathname);
+  if (navLinkItem === undefined) return 'panier';
+  else return navLinkItem.id;
+}
+
+const [activeButton, setActiveButton] = useState(findNavbarItemFromLocation());
+
+  // Similaire à componentDidMount et componentDidUpdate :
+useEffect(() => {
+  smoothScroll(activeButton);
+});
+
+const regex = /^\/admin/g;
   if (!location.pathname.match(regex)) {
     return (
       <nav
-        onMouseEnter={() => setShowBgNavBar(true)}
-        onMouseLeave={() => setShowBgNavBar(false)}
-        className={`navbar ${showBgNavBar ? "active" : ""} ${
-          location.pathname !== "/" ? "sticky" : ""
-        }`}
-        ref={nav}
+        className='navbar'
         id='navbar'>
-        <div className='navbar__container'>
-          <div className='navbar__logo-container'>
-            {location.pathname === "/" ? (
-              <a href='#home' onClick={IsActiveButton("home")}>
-                <img
-                  className='navbar__logo'
-                  src={olokoso_logo}
-                  alt='Olokosso logo'
-                />
-              </a>
-            ) : (
-              <Link to='/' onClick={redirectTo("home", "/")}>
-                <img className='navbar__logo' src={Logo} alt='Olokoso logo' />
-              </Link>
-            )}
-          </div>
+        <div className='navbar__container'>  
+        
+        {/*HOME LOGO*/}
+        <div className='navbar__logo-container'>
+          <NavLink
+            to="/"
+            key='home'
+            exact
+          >
+            <img
+              className='navbar__logo'
+              src={olokoso_logo}
+              alt='Olokosso logo'
+            />
+          </NavLink>
+        </div>
+        
+        <div className='navbar__links'> 
 
-          <div className='navbar__links'>
-            {state.map((link) => {
-              //Case if the link is 'panier'
-              if (link.isBasket) {
-                return (
-                  <div
-                    key={link.path}
-                    onClick={IsActiveButton(link.id)}
-                    className={`${
-                      link.active && location.pathname === link.path
-                        ? "active"
-                        : ""
-                    }navbar__links-basket`}
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                    }}>
-                    <Link
-                      to={link.path}
-                      className={`${
-                        location.pathname === link.path ? "active " : ""
-                      }basket`}>
-                      <i className='fas fa-shopping-basket'></i> Panier
-                      <span>{getNombresArticles(baskets)}</span>
-                    </Link>
-                    <OverlayTrigger
-                      trigger={baskets.length ? ["click"] : ["hover", "focus"]}
-                      placement='bottom'
-                      rootClose={true} // when we click outside , we can close the overlay
-                      overlay={
-                        <Popover>
-                          <Popover.Title as='h3' className='text-center'>
-                            Votre panier {!baskets.length && "est vide"}
-                          </Popover.Title>
-                          {/* quand le panier est rempli*/}
-                          {!!baskets.length && (
-                            <Popover.Content>
-                              {baskets.map((item) => (
-                                <div
-                                  style={{
-                                    display: "flex",
-                                    alignItems: "center",
-                                    padding: "10px 0",
-                                  }}>                                  
-                                  <p
-                                    style={{
-                                      margin: "0 5px 0",
-                                    }}>
-                                    {item.nom}
-                                  </p>
-                                  <p
-                                    style={{
-                                      margin: "0 5px 0",
-                                    }}>
-                                    {(item.quantite * item.prix).toFixed(2)}€
-                                  </p>
-                                </div>
-                              ))}
-                            </Popover.Content>
-                          )}
-                        </Popover>
-                      }>
-                      <IconButton>
-                        <ArrowDropDownIcon />
-                      </IconButton>
-                    </OverlayTrigger>
-                  </div>
-                );
-              }
+{/* ALL OTHER NAVLINKS */}
 
-              //Case if the link is in the Home one page : allows to mark the clicked link as active (hence highlighting it in the navbar)
-              else if (link.estDansHome) {
-                return (
-                  <div
-                    key={link.nom}
-                    onClick={IsActiveButton(link.id)}
-                    className={
-                      link.active && location.pathname === link.path
-                        ? "active"
-                        : undefined
-                    }>
-                    <Link
-                      to={link.path}
-                      //href={"#" + link.id}
-                      key={link.nom}
-                      className={
-                        link.active && location.pathname === link.path
-                          ? "active"
-                          : undefined
-                      }>
-                      {link.nom}
-                    </Link>
-                  </div>
-                );
-              }
+            {navLinks.map(navLink => {
+              return (
+                <NavLink
+                  to={navLink.path}
+                  key={navLink.id}
+                  exact
+                  className={activeButton === navLink.id ? 'navLink--active' : 'navLink--dormant'}
+                  onClick={() => {setActiveButton(navLink.id)}}    
+                >
+                  {navLink.nom}
 
-              // Case for other links, that are neither in the homepage, nor the basket.
-              else {
-                return (
-                  <div
-                    key={link.path}
-                    onClick={IsActiveButton(link.id)}
-                    className={
-                      link.active || location.pathname === link.path
-                        ? "active"
-                        : undefined
-                    }>
-                    <Link
-                      to={link.path}
-                      //href={"#" + link.id}
-                      key={link.nom}
-                      className={
-                        link.active || location.pathname === link.path
-                          ? "active"
-                          : undefined
-                      }>
-                      {link.nom}
-                    </Link>
-                  </div>
-                  /*<Link
-                    to={link.path}
-                    key={link.path}
-                    className={
-                      link.active  && location.pathname === link.path ? "active" : undefined
-                    }
-                      onClick={redirectTo(link.id, link.path)}
-                    >
-                      {link.nom}
-                  </Link>*/
-                );
-              }
-
-              // return jsx
-              // console.log(location.pathname);
+                </NavLink>
+              )
             })}
-          </div>
+
+  {/*CART*/}
+              <NavLink
+                to="/panier"
+                key="panier"
+                exact              
+                className={activeButton === 'panier' ? 'navLink--active' : 'navLink--dormant'}
+                onClick={() => {setActiveButton('panier')}}  
+              >
+                <div
+                  className='navbar__links-basket basket'
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}>
+                    <i className='fas fa-shopping-basket'></i> Panier
+                    <span>{getNombresArticles(baskets)}</span>
+                  <OverlayTrigger
+                    trigger={baskets.length ? ["click"] : ["hover", "focus"]}
+                    placement='bottom'
+                    rootClose={true} // when we click outside , we can close the overlay
+                    overlay={
+                      <Popover>
+                        <Popover.Title as='h3' className='text-center'>
+                          Votre panier {!baskets.length && "est vide"}
+                        </Popover.Title>
+                        {/* quand le panier est rempli*/}
+                        {!!baskets.length && (
+                          <Popover.Content>
+                            {baskets.map((item) => (
+                              <div
+                                style={{
+                                  display: "flex",
+                                  alignItems: "center",
+                                  padding: "10px 0",
+                                }}>                                  
+                                <p
+                                  style={{
+                                    margin: "0 5px 0",
+                                  }}>
+                                  {item.nom}
+                                </p>
+                                <p
+                                  style={{
+                                    margin: "0 5px 0",
+                                  }}>
+                                  {(item.quantite * item.prix).toFixed(2)}€
+                                </p>
+                              </div>
+                            ))}
+                          </Popover.Content>
+                        )}
+                      </Popover>
+                    }>
+                    <IconButton>
+                      <ArrowDropDownIcon />
+                    </IconButton>
+                  </OverlayTrigger>
+                </div>
+              </NavLink>
+
+            </div>
 
           <NavMobile
-            currentPage={currentPage}
-            IsActiveButton={IsActiveButton}
-            location={location}
-            //activeButton={activeButton}
-          />
+            navLinks={navLinks}
+            activeButton={activeButton}
+            setActiveButton={setActiveButton}
+          /> 
         </div>
       </nav>
     );

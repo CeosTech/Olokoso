@@ -47,8 +47,20 @@
   transition: 0.2s;
 }
 
-.navbar__links a:not(.active) {
-  color: white;
+
+.navLink--active.active{
+  color: #FFE000 !important;
+}
+
+.navLink--dormant.active{
+  color: white !important;
+}
+
+.navbar__links a:(.active) {
+  color: #FFE000;
+}
+.navLink--dormant {
+  color: white !important;
 }
 
 .navbar__links-basket {
@@ -78,20 +90,8 @@
 .navbar__links a:hover {
   color:white;
 }
-.navbar.sticky .navbar__links a,
-.navbar.active .navbar__links a,
-.navbar.active .navbar__links .navbar__links-basket .MuiSvgIcon-root,
-.navbar.sticky .navbar__links .navbar__links-basket .MuiSvgIcon-root {
-  color: white;
-}
-.navbar.sticky .navbar__links a.active,
-.navbar__links a.active,
-.navbar.sticky .navbar__links a:hover,
-.navbar.active .navbar__links a.active,
-.navbar.active .navbar__links a:hover,
-.navbar.sticky .navbar__links-basket .MuiIconButton-root:hover .MuiSvgIcon-root,
-.navbar.active .navbar__links-basket .MuiIconButton-root:hover .MuiSvgIcon-root,
-.navbar.sticky .navbar__links-basket.active .MuiSvgIcon-root {
+
+.navLink--active {
   color: #FFE000 !important;
 }
 

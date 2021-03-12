@@ -1,8 +1,5 @@
-const smoothScroll = (to) => (e) => {
-  e.preventDefault();
-  e.stopPropagation();
-
-  const href = e.target.hash || "#" + to; // '#projects'
+const smoothScroll = (to) => {
+  const href = "#" + to; // '#projects'
   const offsetTop =
     document.querySelector(href)?.offsetTop - 60 ||
     document.querySelector(href)?.scrollTop - 60;

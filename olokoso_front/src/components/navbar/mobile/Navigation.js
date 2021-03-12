@@ -2,8 +2,6 @@ import * as React from "react";
 import { motion } from "framer-motion";
 import { MenuItem } from "./MenuItem";
 
-// import links from "../../../RouteLinks";
-import { useNavBarStateValue } from "../../../contexts/Navbar/NavBarState";
 
 const variants = {
   open: {
@@ -16,16 +14,14 @@ const variants = {
 
 export const Navigation = ({
   toggleOpen,
-  currentPage,
-  IsActiveButton,
+  navLinks,
   activeButton,
-  location,
+  setActiveButton,
 }) => {
-  const { state } = useNavBarStateValue();
 
   return (
     <motion.ul variants={variants}>
-      {state.map(({ path, nom, estDansHome, id, active }) => {
+      {navLinks.map(({ path, id, nom }) => {
         // if (!estDansHome) {
         return (
           <MenuItem
@@ -33,13 +29,9 @@ export const Navigation = ({
             key={nom}
             path={path}
             nom={nom}
-            currentPage={currentPage}
-            estDansHome={estDansHome}
             id={id}
-            active={active}
-            IsActiveButton={IsActiveButton}
             activeButton={activeButton}
-            location={location}
+            setActiveButton={setActiveButton}
           />
         );
         // }
