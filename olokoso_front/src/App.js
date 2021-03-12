@@ -1,7 +1,6 @@
 import "./App.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import NavBar from "./components/navbar/Navbar";
-import NavBarContextProvider from "./contexts/Navbar/NavBarState";
 import NotFoundPage from "./pages/NotFoundPage";
 import Home from "./pages/Home";
 import Commander from "./pages/Commander";
@@ -35,9 +34,7 @@ function App() {
     <div className='App'>
       <Alerts />
       <Router>
-        <NavBarContextProvider>
-          <NavBar />
-        </NavBarContextProvider>
+        <NavBar />
         <Switch>
           <Route exact path='/'>
             <Home />
