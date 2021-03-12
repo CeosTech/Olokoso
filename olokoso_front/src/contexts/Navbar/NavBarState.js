@@ -5,7 +5,7 @@ export const NavBarContext = createContext();
 const initialState = [
   { path: "/", id: "home", nom: "Accueil", estDansHome: true, active: true },
 
-  { path: "/", id: "brunch", nom: "Restaurant", estDansHome: true, active: false },
+  { path: "/", id: "restaurant", nom: "Restaurant", estDansHome: true, active: false },
 
   { path: "/commander", id: "commander", nom: "Carte", estDansHome: false, active: false },
 

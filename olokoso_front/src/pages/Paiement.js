@@ -83,7 +83,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Paiement = (props) => {
   
-  // With location we can retrieve the kins of delivery chosen (was passed in props of history)
+  // With location we can retrieve the kind of delivery chosen (was passed in props of history)
   const location = useLocation();
 
   const [paiment_process, setPaiement_process] = useState('livraison');
@@ -436,7 +436,7 @@ const Paiement = (props) => {
             
             {/* The type of delivery chosen */}
             <div className="delivery-infos__container">
-              <p className="paiement__delivery-informations">choix de livraison : {location.delivery.value}</p>
+              <p className="paiement__delivery-informations">Choix de livraison : {location.delivery.value}</p>
             </div>
 
             <Button
